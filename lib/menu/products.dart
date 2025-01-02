@@ -29,7 +29,7 @@ class _Products extends State<Products> {
         textChange,
         style: TextStyle(fontSize: 40),
       ),
-      // card for card in productsCard adasd
+      // card for card in productsCard
       TextButton.icon(
           onPressed: method,
           style: TextButton.styleFrom(
