@@ -1,4 +1,5 @@
 import 'package:estoque_delta/data/products_cards.dart';
+import 'package:estoque_delta/models/card_menu.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -29,8 +30,8 @@ class _Products extends State<Products> {
         textChange,
         style: TextStyle(fontSize: 40),
       ),
-      ...productsCards.map((card) {
-        return card;
+      ...productsCards.map((infos) {
+        return ProductCard(infos, method);
       }),
       TextButton.icon(
           onPressed: method,
