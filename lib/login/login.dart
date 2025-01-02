@@ -17,7 +17,7 @@ class Login extends StatelessWidget {
         ),
       ),
         Text(
-          'Bem vindo(a)\nao Delta Alimentos!',
+          'Bem vindo(a)ao \nGerenciador de Estoque!',
           textAlign: TextAlign.center,
         ),
         TextButton(onPressed: method, child: Text("Trocar tela"))

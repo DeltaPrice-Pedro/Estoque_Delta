@@ -29,7 +29,9 @@ class _Products extends State<Products> {
         textChange,
         style: TextStyle(fontSize: 40),
       ),
-      // card for card in productsCard
+      ...productsCards.map((card) {
+        return card;
+      }),
       TextButton.icon(
           onPressed: method,
           style: TextButton.styleFrom(

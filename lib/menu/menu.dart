@@ -12,45 +12,41 @@ class Menu extends StatefulWidget {
 }
 
 class _Menu extends State<Menu> {
-  Widget produtos = Products();
-  Widget perfil = Profile();
   Widget activatePage = Products();
+  bool menuState = true;
 
-  switchPage(Widget page) {
+  switchPage() {
     setState(() {
-      activatePage = page;
+      activatePage = menuState == true ? Profile() : Products();
     });
+    menuState = !menuState;
   }
 
   @override
   Widget build(context) {
     return Column(children: [
-      Padding(
-        padding: const EdgeInsets.only(top: 20),
-        child: Image.asset(
-          'assets/images/deltaprice_hori.png',
-          width: 400,
-        ),
+      Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Image.asset(
+              'assets/images/deltaprice_hori.png',
+              width: 400,
+            ),
+          ),
+          TextButton.icon(
+              onPressed: switchPage,
+              style: TextButton.styleFrom(
+                  padding: const EdgeInsets.all(20), minimumSize: Size(40, 40)),
+              icon: const Icon(Icons.import_contacts_sharp),
+              label: const Text('Perfil'))
+        ],
       ),
       Text(
         'Menu',
         style: TextStyle(fontSize: 40),
       ),
       activatePage,
-      Row(children: [
-        TextButton.icon(
-            onPressed: switchPage(produtos),
-            style: TextButton.styleFrom(
-                padding: const EdgeInsets.all(20), minimumSize: Size(40, 40)),
-            icon: const Icon(Icons.import_contacts_sharp),
-            label: const Text('Produtos')),
-        TextButton.icon(
-            onPressed: switchPage(perfil),
-            style: TextButton.styleFrom(
-                padding: const EdgeInsets.all(20), minimumSize: Size(40, 40)),
-            icon: const Icon(Icons.import_contacts_sharp),
-            label: const Text('Perfil')),
-      ])
     ]);
   }
 }
