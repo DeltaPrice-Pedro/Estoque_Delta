@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Card extends StatelessWidget {
-  const Card(this.titulo, this.preco, this.medida, this.imagem, {super.key});
+  const Card(this.titulo, this.preco, this.medida, this.imagem, this.method, {super.key});
 
   final String titulo;
   final String preco;
   final String medida;
   final String imagem;
+  final void Function() method;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class Card extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(titulo),
-          ElevatedButton(onPressed: () {}, child: const Text('Comprar'))
+          ElevatedButton(onPressed: method, child: const Text('Comprar'))
         ],
       ),
     );
