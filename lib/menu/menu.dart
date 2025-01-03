@@ -12,12 +12,14 @@ class Menu extends StatefulWidget {
 }
 
 class _Menu extends State<Menu> {
+  Widget profilePage = Profile();
+  Widget productsPage = Products();
   Widget activatePage = Products();
   bool menuState = true;
 
   switchPage() {
     setState(() {
-      activatePage = menuState == true ? Profile() : Products();
+      activatePage = menuState == true ? profilePage : productsPage;
     });
     menuState = !menuState;
   }
