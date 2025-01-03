@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:estoque_delta/login/inputLogin.dart';
+// import 'package:estoque_delta/login/inputLogin.dart';
 
 class Login extends StatelessWidget {
   const Login(this.method, {super.key});
@@ -21,7 +21,7 @@ class Login extends StatelessWidget {
           'Bem vindo(a)ao \nGerenciador de Estoque!',
           textAlign: TextAlign.center,
         ),
-        InputLogin(),
+        //InputLogin(),
         TextButton(onPressed: method, child: Text("Trocar tela"))
       ],
     );

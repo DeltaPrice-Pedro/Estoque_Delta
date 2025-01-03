@@ -15,6 +15,8 @@ class _Menu extends State<Menu> {
   Widget profilePage = Profile();
   Widget productsPage = Products();
   Widget activatePage = Products();
+  IconData activatePerfil = Icons.account_circle_outlined;
+
   bool menuState = true;
 
   switchPage() {
@@ -26,29 +28,48 @@ class _Menu extends State<Menu> {
 
   @override
   Widget build(context) {
-    return Column(children: [
-      Column(
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Image.asset(
-              'assets/images/deltaprice_hori.png',
-              width: 400,
+          Container(
+            color: Colors.white,
+            padding: EdgeInsets.all(30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              verticalDirection: VerticalDirection.up,
+              children: [
+                Image.asset(
+                  'assets/images/deltaprice_hori.png',
+                  width: 300,
+                ),
+                SizedBox(
+                  height: 70,
+                  width: 2,
+                  child: ColoredBox(
+                    color: Colors.blue,
+                  ),
+                ),
+                IconButton(
+                  onPressed: switchPage,
+                  icon: Icon(Icons.account_circle_outlined),
+                  alignment: Alignment.center,
+                  color: Colors.lightBlue,
+                  isSelected: false,
+                  selectedIcon: Icon(Icons.account_circle_rounded),
+                  mouseCursor: SystemMouseCursors.click,
+                  splashColor: Colors.lightBlueAccent,
+                  style: IconButton.styleFrom(minimumSize: Size(70, 70)),
+                )
+              ],
             ),
           ),
-          TextButton.icon(
-              onPressed: switchPage,
-              style: TextButton.styleFrom(
-                  padding: const EdgeInsets.all(20), minimumSize: Size(40, 40)),
-              icon: const Icon(Icons.import_contacts_sharp),
-              label: const Text('Perfil'))
+          SizedBox(
+            height: 30,
+          ),
+          activatePage,
         ],
       ),
-      Text(
-        'Menu',
-        style: TextStyle(fontSize: 40),
-      ),
-      activatePage,
-    ]);
+    );
   }
 }

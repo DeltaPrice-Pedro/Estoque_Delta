@@ -27,8 +27,20 @@ class _Products extends State<Products> {
   Widget build(context) {
     return Column(children: [
       Text(
+        'Lista de Produtos',
+        style: TextStyle(color: Colors.white, fontSize: 50),
+      ),
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ElevatedButton(onPressed: () {}, child: Text('Refrigerante')),
+          ElevatedButton(onPressed: () {}, child: Text('Suco')),
+          ElevatedButton(onPressed: () {}, child: Text('Água'))
+        ],
+      ),
+      Text(
         textChange,
-        style: TextStyle(fontSize: 40),
+        style: TextStyle(fontSize: 20),
       ),
       SizedBox(
           height: 150,
