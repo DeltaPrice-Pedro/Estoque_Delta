@@ -1,4 +1,4 @@
-import 'package:estoque_delta/data/products_cards.dart';
+import 'package:estoque_delta/data/products_data.dart';
 import 'package:estoque_delta/models/card_menu.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -34,8 +34,8 @@ class _Products extends State<Products> {
           height: 150,
           child: SingleChildScrollView(
             child: Column(
-                children: productsCards.map((infos) {
-              return ProductCard(infos, method) ;
+                children: productsData.map((infos) {
+              return ProductCard(infos, method);
             }).toList()),
           )),
       TextButton.icon(

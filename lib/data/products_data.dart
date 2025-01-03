@@ -1,4 +1,4 @@
-const productsCards = [
+const productsData = [
   {
     'titulo': 'titulo1',
     'preco': 'preco1',

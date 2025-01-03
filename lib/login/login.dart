@@ -20,6 +20,7 @@ class Login extends StatelessWidget {
           'Bem vindo(a)ao \nGerenciador de Estoque!',
           textAlign: TextAlign.center,
         ),
+        InputWidget
         TextButton(onPressed: method, child: Text("Trocar tela"))
       ],
     );
