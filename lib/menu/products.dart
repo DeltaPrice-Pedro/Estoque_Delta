@@ -30,9 +30,14 @@ class _Products extends State<Products> {
         textChange,
         style: TextStyle(fontSize: 40),
       ),
-      ...productsCards.map((infos) {
-        return ProductCard(infos, method);
-      }),
+      SizedBox(
+          height: 150,
+          child: SingleChildScrollView(
+            child: Column(
+                children: productsCards.map((infos) {
+              return ProductCard(infos, method) ;
+            }).toList()),
+          )),
       TextButton.icon(
           onPressed: method,
           style: TextButton.styleFrom(

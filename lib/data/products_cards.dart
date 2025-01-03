@@ -8,5 +8,10 @@ const productsCards = [
     'titulo': 'titulo2',
     'preco': 'preco2',
     'volume': 'volume2',
+  },
+  {
+    'titulo': 'titulo3',
+    'preco': 'preco3',
+    'volume': 'volume3',
   }
 ];
