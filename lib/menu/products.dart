@@ -31,7 +31,7 @@ class _Products extends State<Products> {
         style: TextStyle(color: Colors.white, fontSize: 50),
       ),
       Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton(onPressed: () {}, child: Text('Refrigerante')),
           ElevatedButton(onPressed: () {}, child: Text('Suco')),
