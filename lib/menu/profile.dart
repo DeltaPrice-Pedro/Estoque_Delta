@@ -20,14 +20,14 @@ class Profile extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontStyle: FontStyle.italic,
-              fontSize: 20,
+              fontSize: 25,
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.exit_to_app_outlined),
+            alignment: Alignment.centerRight,
             style: ElevatedButton.styleFrom(
-              alignment: Alignment.centerRight,
               backgroundColor: Colors.red,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
@@ -51,7 +51,7 @@ class Profile extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         child: SizedBox(
           height: 2,
-          width: 70,
+          width: 500,
           child: ColoredBox(
             color: Colors.white,
           ),

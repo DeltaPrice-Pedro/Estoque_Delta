@@ -31,7 +31,7 @@ class _Products extends State<Products> {
         style: TextStyle(color: Colors.white, fontSize: 50),
       ),
       Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           ElevatedButton(onPressed: () {}, child: Text('Refrigerante')),
           ElevatedButton(onPressed: () {}, child: Text('Suco')),
@@ -42,14 +42,17 @@ class _Products extends State<Products> {
         textChange,
         style: TextStyle(fontSize: 20),
       ),
-      SizedBox(
-          height: 150,
-          child: SingleChildScrollView(
-            child: Column(
-                children: productsData.map((infos) {
-              return ProductCard(infos, method);
-            }).toList()),
-          )),
+      Padding(
+        padding: const EdgeInsets.all(20),
+        child: SizedBox(
+            height: 440,
+            child: SingleChildScrollView(
+              child: Column(
+                  children: productsData.map((infos) {
+                return ProductCard(infos, method);
+              }).toList()),
+            )),
+      ),
     ]);
   }
 }
