@@ -1,5 +1,5 @@
 import 'package:estoque_delta/data/products_data.dart';
-import 'package:estoque_delta/models/card_menu.dart';
+import 'package:estoque_delta/models/menu_card.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -50,13 +50,6 @@ class _Products extends State<Products> {
               return ProductCard(infos, method);
             }).toList()),
           )),
-      TextButton.icon(
-          onPressed: method,
-          style: TextButton.styleFrom(
-              padding: const EdgeInsets.only(top: 20),
-              minimumSize: Size(40, 40)),
-          icon: const Icon(Icons.import_contacts_sharp),
-          label: const Text('Enviar')),
     ]);
   }
 }
