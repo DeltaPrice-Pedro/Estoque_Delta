@@ -15,31 +15,30 @@ class ProductCard extends StatelessWidget {
     return Card(
         elevation: 5,
         clipBehavior: Clip.antiAlias,
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          // Image.asset(
-          //   'assets/images/deltaprice_hori.png',
-          //   width: 20,
-          // ),
-          Row(
-            children: [
-              ListTile(
-                title: Text(titulo),
-                subtitle: Text(
-                  '$volume - R\$ $preco',
-                  style: TextStyle(color: Colors.black),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/images/deltaprice_hori.png',
+              width: 500,
+            ),
+            ListTile(
+              title: Text(titulo),
+              subtitle: Text(
+                '$volume - R\$ $preco',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            OverflowBar(
+              alignment: MainAxisAlignment.end,
+              children: [
+                FilledButton(
+                  onPressed: () {},
+                  child: const Text('ACTION 1'),
                 ),
-              ),
-              OverflowBar(
-                alignment: MainAxisAlignment.end,
-                children: [
-                  FilledButton(
-                    onPressed: () {},
-                    child: const Text('ACTION 1'),
-                  ),
-                ],
-              ),
-            ],
-          )
-        ]));
+              ],
+            ),
+          ],
+        ));
   }
 }
