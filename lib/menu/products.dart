@@ -30,6 +30,16 @@ class _Products extends State<Products> {
         'Lista de Produtos',
         style: TextStyle(color: Colors.white, fontSize: 50),
       ),
+      Padding(
+        padding: const EdgeInsets.all(15),
+        child: SizedBox(
+          height: 2,
+          width: 500,
+          child: ColoredBox(
+            color: Colors.white,
+          ),
+        ),
+      ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -45,7 +55,7 @@ class _Products extends State<Products> {
       Padding(
         padding: const EdgeInsets.all(20),
         child: SizedBox(
-            height: 440,
+            height: 330,
             child: SingleChildScrollView(
               child: Column(
                   children: productsData.map((infos) {
