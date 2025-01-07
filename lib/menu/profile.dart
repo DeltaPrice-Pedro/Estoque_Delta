@@ -10,9 +10,9 @@ class Profile extends StatelessWidget {
 
   String greeting() {
     int currentHour = DateTime.now().hour;
-    String timeGreeting = (currentHour > 12)
+    String timeGreeting = (currentHour < 12)
         ? 'Bom dia'
-        : (currentHour < 12 && currentHour > 18)
+        : (currentHour > 12 && currentHour < 18)
             ? 'Boa tarde'
             : 'Boa noite';
     return '$timeGreeting, $nomeUsuario';
@@ -28,10 +28,10 @@ class Profile extends StatelessWidget {
           Text(
             greeting(),
             textAlign: TextAlign.center,
-            style: GoogleFonts.farsan(
+            style: GoogleFonts.dmSans(
               color: Colors.white,
               fontStyle: FontStyle.italic,
-              fontSize: 35,
+              fontSize: 25,
             ),
           ),
           IconButton(
