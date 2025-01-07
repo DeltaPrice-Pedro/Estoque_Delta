@@ -1,7 +1,6 @@
 import 'package:estoque_delta/data/products_data.dart';
 import 'package:estoque_delta/models/menu_card.dart';
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 class Products extends StatefulWidget {
   const Products({super.key});
@@ -13,16 +12,6 @@ class Products extends StatefulWidget {
 }
 
 class _Products extends State<Products> {
-  String textChange = 'Sesas Num.: Null';
-  var random = Random();
-
-  void method() {
-    int randomNum = random.nextInt(11);
-    setState(() {
-      textChange = 'Sesas Num.: $randomNum';
-    });
-  }
-
   @override
   Widget build(context) {
     return Column(children: [
@@ -48,10 +37,6 @@ class _Products extends State<Products> {
           ElevatedButton(onPressed: () {}, child: Text('Água'))
         ],
       ),
-      Text(
-        textChange,
-        style: TextStyle(fontSize: 20),
-      ),
       Padding(
         padding: const EdgeInsets.all(20),
         child: SizedBox(
@@ -59,7 +44,7 @@ class _Products extends State<Products> {
             child: SingleChildScrollView(
               child: Column(
                   children: productsData.map((infos) {
-                return ProductCard(infos, method);
+                return ProductCard(infos);
               }).toList()),
             )),
       ),

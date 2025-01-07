@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:estoque_delta/models/menu_dialog.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard(this.infos, this.method, {super.key});
+  const ProductCard(this.infos, {super.key});
 
   final Map infos;
-  final void Function() method;
 
   IconData choseIcon() {
     int tipo = infos['type'];
@@ -54,10 +54,15 @@ class ProductCard extends StatelessWidget {
                               ? Icon(Icons.check_circle_outline_rounded)
                               : Icon(Icons.remove_circle_outline_rounded),
                           enabled: (amount != 0) ? true : false,
-                          leading: Icon(choseIcon(), size: 35,),
+                          leading: Icon(
+                            choseIcon(),
+                            size: 35,
+                          ),
                           iconColor: Colors.blue,
                           onTap: () {
-                            method;
+                            showDialog(
+                                context: context,
+                                builder: (context) => ProductDialog(infos));
                           },
                         ),
                       ))

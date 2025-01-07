@@ -13,7 +13,7 @@ class HistoryCard extends StatelessWidget {
     String preco = history['price'];
 
     return Card.outlined(
-        shape: BeveledRectangleBorder(
+        shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.0),
             side: BorderSide(
               color: const Color.fromARGB(255, 172, 43, 34),
