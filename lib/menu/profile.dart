@@ -11,7 +11,7 @@ class Profile extends StatelessWidget {
   Widget build(context) {
     return Column(children: [
       Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         verticalDirection: VerticalDirection.down,
         children: [
           Column(
@@ -37,15 +37,18 @@ class Profile extends StatelessWidget {
               ),
             ],
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.exit_to_app_outlined),
+          Container(
             alignment: Alignment.centerRight,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.exit_to_app_outlined),
+              alignment: Alignment.centerRight,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
             ),
           ),
