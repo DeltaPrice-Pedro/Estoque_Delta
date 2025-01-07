@@ -30,7 +30,7 @@ class Profile extends StatelessWidget {
             textAlign: TextAlign.center,
             style: GoogleFonts.dmSans(
               color: Colors.white,
-              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.bold,
               fontSize: 25,
             ),
           ),
