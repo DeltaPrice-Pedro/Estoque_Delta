@@ -1,5 +1,6 @@
 import 'package:estoque_delta/data/products_data.dart';
 import 'package:estoque_delta/models/menu_card.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 class Products extends StatefulWidget {
@@ -16,8 +17,8 @@ class _Products extends State<Products> {
   Widget build(context) {
     return Column(children: [
       Text(
-        'Lista de Produtos',
-        style: TextStyle(color: Colors.white, fontSize: 50),
+        'Produtos disponíveis',
+        style: GoogleFonts.poppins(color: Colors.white, fontSize: 40),
       ),
       Padding(
         padding: const EdgeInsets.all(15),
@@ -32,9 +33,15 @@ class _Products extends State<Products> {
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ElevatedButton(onPressed: () {}, child: Text('Refrigerante')),
-          ElevatedButton(onPressed: () {}, child: Text('Suco')),
-          ElevatedButton(onPressed: () {}, child: Text('Água'))
+          ElevatedButton(
+              onPressed: () {},
+              child: Text('Refrigerante', style: GoogleFonts.poppins())),
+          ElevatedButton(
+              onPressed: () {},
+              child: Text('Suco', style: GoogleFonts.poppins())),
+          ElevatedButton(
+              onPressed: () {},
+              child: Text('Água', style: GoogleFonts.poppins()))
         ],
       ),
       Padding(

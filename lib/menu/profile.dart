@@ -1,54 +1,48 @@
-import 'package:flutter/material.dart';
 import 'package:estoque_delta/data/history_data.dart';
 import 'package:estoque_delta/models/history_card.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
   const Profile(this.nomeUsuario, {super.key});
 
   final String nomeUsuario;
 
+  String greeting() {
+    int currentHour = DateTime.now().hour;
+    String timeGreeting = (currentHour > 12)
+        ? 'Bom dia'
+        : (currentHour < 12 && currentHour > 18)
+            ? 'Boa tarde'
+            : 'Boa noite';
+    return '$timeGreeting, $nomeUsuario';
+  }
+
   @override
   Widget build(context) {
     return Column(children: [
       Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         verticalDirection: VerticalDirection.down,
         children: [
-          Column(
-            children: [
-              Text(
-                'Bom dia!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 25,
-                ),
-              ),
-              Text(
-                nomeUsuario,
-                textAlign: TextAlign.center,
-                softWrap: true,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                ),
-              ),
-            ],
+          Text(
+            greeting(),
+            textAlign: TextAlign.center,
+            style: GoogleFonts.farsan(
+              color: Colors.white,
+              fontStyle: FontStyle.italic,
+              fontSize: 35,
+            ),
           ),
-          Container(
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.exit_to_app_outlined),
             alignment: Alignment.centerRight,
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.exit_to_app_outlined),
-              alignment: Alignment.centerRight,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),
@@ -67,7 +61,7 @@ class Profile extends StatelessWidget {
       Text(
         'Histórico de consumo',
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: GoogleFonts.poppins(
           color: Colors.white,
           fontSize: 30,
         ),

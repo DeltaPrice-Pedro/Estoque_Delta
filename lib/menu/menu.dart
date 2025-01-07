@@ -12,7 +12,7 @@ class Menu extends StatefulWidget {
 }
 
 class _Menu extends State<Menu> {
-  Widget profilePage = Profile('Sesas');
+  Widget profilePage = Profile('Wellington Celestino');
   Widget productsPage = Products();
   Widget activatePage = Products();
   IconData activatePerfil = Icons.account_circle_outlined;
@@ -65,7 +65,7 @@ class _Menu extends State<Menu> {
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           activatePage,
         ],
