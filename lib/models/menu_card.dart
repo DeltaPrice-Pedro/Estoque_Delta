@@ -7,7 +7,7 @@ class ProductCard extends StatelessWidget {
   final void Function() method;
 
   IconData choseIcon() {
-    int tipo = infos['tipo'];
+    int tipo = infos['type'];
     return (tipo == 1)
         ? Icons.bubble_chart_rounded
         : (tipo == 2)
@@ -17,33 +17,50 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String titulo = infos['titulo'];
-    String volume = infos['volume'];
-    String preco = infos['preco'];
+    String titulo = infos['title'];
+    String volume = infos['volum'];
+    String preco = infos['price'];
+    int amount = infos['amount'];
+    String urlImage = infos['image'];
 
     return Card(
         elevation: 5,
         clipBehavior: Clip.antiAlias,
-        child: Column(
-          children: [
-            Image.network(
-              'https://www.callfarma.com.br/_next/image?url=https%3A%2F%2Fd2lakedouw4zad.cloudfront.net%2Fcoca-cola-lata-350ml-74082.png&w=828&q=75',
-              height: 100,
-            ),
-            ListTile(
-              leading: Icon(choseIcon()),
-              iconColor: Colors.blue,
-              title: Text('$titulo - $volume ml'),
-              titleAlignment: ListTileTitleAlignment.center,
-              subtitle: Text(
-                'R\$ $preco',
-                style: TextStyle(color: Colors.black),
-              ),
-              onTap: () {
-                print(infos);
-              },
-            ),
-          ],
-        ));
+        child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: SizedBox(
+                height: 100,
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      AspectRatio(
+                        aspectRatio: 1.0,
+                        child: Image.network(
+                          urlImage,
+                          height: 100,
+                        ),
+                      ),
+                      Expanded(
+                          child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0.0, 12.5, 2.0, 0.0),
+                        child: ListTile(
+                          title: Text('$titulo - $volume ml'),
+                          titleAlignment: ListTileTitleAlignment.center,
+                          subtitle: Text(
+                            'R\$ $preco',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          trailing: (amount != 0)
+                              ? Icon(Icons.check_circle_outline_rounded)
+                              : Icon(Icons.remove_circle_outline_rounded),
+                          enabled: (amount != 0) ? true : false,
+                          leading: Icon(choseIcon()),
+                          iconColor: Colors.blue,
+                          onTap: () {
+                            method;
+                          },
+                        ),
+                      ))
+                    ]))));
   }
 }
