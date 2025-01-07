@@ -11,17 +11,31 @@ class Profile extends StatelessWidget {
   Widget build(context) {
     return Column(children: [
       Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         verticalDirection: VerticalDirection.down,
         children: [
-          Text(
-            'Bom dia!',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontStyle: FontStyle.italic,
-              fontSize: 25,
-            ),
+          Column(
+            children: [
+              Text(
+                'Bom dia!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 25,
+                ),
+              ),
+              Text(
+                nomeUsuario,
+                textAlign: TextAlign.center,
+                softWrap: true,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                ),
+              ),
+            ],
           ),
           IconButton(
             onPressed: () {},
@@ -37,16 +51,6 @@ class Profile extends StatelessWidget {
           ),
         ],
       ),
-      Text(
-        nomeUsuario,
-        textAlign: TextAlign.center,
-        softWrap: true,
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 30,
-        ),
-      ),
       Padding(
         padding: const EdgeInsets.all(15),
         child: SizedBox(
@@ -58,21 +62,24 @@ class Profile extends StatelessWidget {
         ),
       ),
       Text(
-        'Histórico de uso',
+        'Histórico de consumo',
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Colors.white,
           fontSize: 30,
         ),
       ),
-      SizedBox(
-          height: 150,
-          child: SingleChildScrollView(
-            child: Column(
-                children: historyData.map((history) {
-              return HistoryCard(history);
-            }).toList()),
-          )),
+      Padding(
+        padding: const EdgeInsets.all(20),
+        child: SizedBox(
+            height: 330,
+            child: SingleChildScrollView(
+              child: Column(
+                  children: historyData.map((history) {
+                return HistoryCard(history);
+              }).toList()),
+            )),
+      )
     ]);
   }
 }

@@ -54,7 +54,7 @@ class ProductCard extends StatelessWidget {
                               ? Icon(Icons.check_circle_outline_rounded)
                               : Icon(Icons.remove_circle_outline_rounded),
                           enabled: (amount != 0) ? true : false,
-                          leading: Icon(choseIcon()),
+                          leading: Icon(choseIcon(), size: 35,),
                           iconColor: Colors.blue,
                           onTap: () {
                             method;

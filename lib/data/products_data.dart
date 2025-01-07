@@ -13,7 +13,7 @@ const productsData = [
     'volum': 'volum2',
     'type': 2,
     'amount': 0,
-    'image': 'https://images-americanas.b2w.io/produtos/4917611954/imagens/suco-misto-de-maca-e-uva-sem-adicao-de-acucar-maguary-fruit-shoot-caixa-150ml/4917611954_1_xlarge.jpg'
+    'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThnUgZ2m66v2jLAVGq_19JNbIBhVlQtDyQAQ&s'
   },
   {
     'title': 'title3',

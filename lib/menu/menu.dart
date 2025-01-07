@@ -55,11 +55,11 @@ class _Menu extends State<Menu> {
                   icon: Icon(Icons.account_circle_outlined),
                   alignment: Alignment.center,
                   color: Colors.lightBlue,
-                  isSelected: false,
+                  isSelected: true,
                   selectedIcon: Icon(Icons.account_circle_rounded),
                   mouseCursor: SystemMouseCursors.click,
                   splashColor: Colors.lightBlueAccent,
-                  style: IconButton.styleFrom(minimumSize: Size(70, 70)),
+                  iconSize: 40,
                 )
               ],
             ),
