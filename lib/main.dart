@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:estoque_delta/login/login.dart';
 import 'package:estoque_delta/menu/menu.dart';
 
-void main() {
-  runApp(const InitPage());
-}
+void main() => runApp(const InitPage());
 
 class InitPage extends StatefulWidget {
   const InitPage({super.key});
@@ -33,7 +31,7 @@ class _InitPage extends State<InitPage> {
   @override
   Widget build(context) {
     return MaterialApp(
-        title: 'Sesas',
+        title: 'Estoque Deltaprice',
         home: Scaffold(
           body: Container(
             decoration: BoxDecoration(

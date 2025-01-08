@@ -22,8 +22,7 @@ class HistoryCard extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: SizedBox(
             height: 100,
-            child: Expanded(
-                child: Padding(
+            child: Padding(
               padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
               child: ListTile(
                 trailing: Icon(
@@ -39,6 +38,6 @@ class HistoryCard extends StatelessWidget {
                 ),
                 iconColor: Colors.blue,
               ),
-            ))));
+            )));
   }
 }
