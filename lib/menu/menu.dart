@@ -21,7 +21,7 @@ class _Menu extends State<Menu> {
 
   switchPage() {
     setState(() {
-      activatePage = menuState == true ? profilePage : productsPage;
+      activatePage = menuState ? profilePage : productsPage;
     });
     menuState = !menuState;
   }
@@ -52,12 +52,11 @@ class _Menu extends State<Menu> {
                 ),
                 IconButton(
                   onPressed: switchPage,
-                  icon: Icon(Icons.account_circle_outlined),
+                  icon: menuState
+                      ? Icon((Icons.account_circle_outlined))
+                      : Icon(Icons.account_circle_rounded),
                   alignment: Alignment.center,
                   color: Colors.lightBlue,
-                  isSelected: true,
-                  selectedIcon: Icon(Icons.account_circle_rounded),
-                  mouseCursor: SystemMouseCursors.click,
                   splashColor: Colors.lightBlueAccent,
                   iconSize: 40,
                 )

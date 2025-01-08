@@ -22,5 +22,37 @@ const productsData = [
     'type': 3,
     'amount': 2,
     'image': 'https://apoioentrega.vteximg.com.br/arquivos/ids/852372/128586_0.png?v=638595401706500000'
-  }
+  },
+  {
+    'title': 'title3',
+    'price': 'price3',
+    'volum': 'volum3',
+    'type': 3,
+    'amount': 2,
+    'image': 'https://apoioentrega.vteximg.com.br/arquivos/ids/852372/128586_0.png?v=638595401706500000'
+  },
+  {
+    'title': 'title3',
+    'price': 'price3',
+    'volum': 'volum3',
+    'type': 3,
+    'amount': 2,
+    'image': 'https://apoioentrega.vteximg.com.br/arquivos/ids/852372/128586_0.png?v=638595401706500000'
+  },
+  {
+    'title': 'title3',
+    'price': 'price3',
+    'volum': 'volum3',
+    'type': 3,
+    'amount': 2,
+    'image': 'https://apoioentrega.vteximg.com.br/arquivos/ids/852372/128586_0.png?v=638595401706500000'
+  },
+  {
+    'title': 'title3',
+    'price': 'price3',
+    'volum': 'volum3',
+    'type': 3,
+    'amount': 2,
+    'image': 'https://apoioentrega.vteximg.com.br/arquivos/ids/852372/128586_0.png?v=638595401706500000'
+  },
 ];

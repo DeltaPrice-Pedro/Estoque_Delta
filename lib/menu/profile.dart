@@ -9,12 +9,12 @@ class Profile extends StatelessWidget {
   final String nomeUsuario;
 
   String greeting() {
-    int currentHour = DateTime.now().hour;
+    int currentHour = DateTime.now().hour - 3;
     return (currentHour < 12)
-        ? 'Bom dia'
+        ? 'Bom dia, '
         : (currentHour > 12 && currentHour < 18)
-            ? 'Boa tarde'
-            : 'Boa noite';
+            ? 'Boa tarde, '
+            : 'Boa noite, ';
   }
 
   @override
@@ -31,7 +31,7 @@ class Profile extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.dmSans(
                   color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
                   fontSize: 25,
                 ),
               ),
@@ -40,7 +40,6 @@ class Profile extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.dmSans(
                   color: Colors.white,
-                  fontStyle: FontStyle.italic,
                   fontSize: 25,
                 ),
               ),

@@ -44,7 +44,7 @@ class _Products extends State<Products> {
               child: Text('Água', style: GoogleFonts.poppins()))
         ],
       ),
-      Padding(
+      Container(
         padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Column(
