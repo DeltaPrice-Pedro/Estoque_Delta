@@ -44,14 +44,12 @@ class _Products extends State<Products> {
               child: Text('Água', style: GoogleFonts.poppins()))
         ],
       ),
-      Container(
+      SingleChildScrollView(
         padding: const EdgeInsets.all(20),
-        child: SingleChildScrollView(
-          child: Column(
-              children: productsData.map((infos) {
-            return ProductCard(infos);
-          }).toList()),
-        ),
+        child: Column(
+            children: productsData.map((infos) {
+          return ProductCard(infos);
+        }).toList()),
       ),
     ]);
   }
