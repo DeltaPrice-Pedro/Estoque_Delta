@@ -10,12 +10,11 @@ class Profile extends StatelessWidget {
 
   String greeting() {
     int currentHour = DateTime.now().hour;
-    String timeGreeting = (currentHour < 12)
+    return (currentHour < 12)
         ? 'Bom dia'
         : (currentHour > 12 && currentHour < 18)
             ? 'Boa tarde'
             : 'Boa noite';
-    return '$timeGreeting, $nomeUsuario';
   }
 
   @override
@@ -25,14 +24,27 @@ class Profile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         verticalDirection: VerticalDirection.down,
         children: [
-          Text(
-            greeting(),
-            textAlign: TextAlign.center,
-            style: GoogleFonts.dmSans(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 25,
-            ),
+          Row(
+            children: [
+              Text(
+                greeting(),
+                textAlign: TextAlign.center,
+                style: GoogleFonts.dmSans(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                ),
+              ),
+              Text(
+                nomeUsuario,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.dmSans(
+                  color: Colors.white,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 25,
+                ),
+              ),
+            ],
           ),
           IconButton(
             onPressed: () {},

@@ -46,14 +46,12 @@ class _Products extends State<Products> {
       ),
       Padding(
         padding: const EdgeInsets.all(20),
-        child: SizedBox(
-            height: 330,
-            child: SingleChildScrollView(
-              child: Column(
-                  children: productsData.map((infos) {
-                return ProductCard(infos);
-              }).toList()),
-            )),
+        child: SingleChildScrollView(
+          child: Column(
+              children: productsData.map((infos) {
+            return ProductCard(infos);
+          }).toList()),
+        ),
       ),
     ]);
   }
