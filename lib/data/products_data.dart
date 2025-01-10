@@ -5,7 +5,7 @@ const productsData = [
     'volum': 'volum1',
     'type': 1,
     'amount': 2,
-    'image': 'https://www.callfarma.com.br/_next/image?url=https%3A%2F%2Fd2lakedouw4zad.cloudfront.net%2Fcoca-cola-lata-350ml-74082.png&w=828&q=75'
+    'image': 'https://images.tcdn.com.br/img/img_prod/1115696/coca_cola_lata_220ml_11_1_f92e9b64840da2cb6a6da37ca150e390.jpg'
   },
   {
     'title': 'title2',
