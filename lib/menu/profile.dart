@@ -79,10 +79,13 @@ class Profile extends StatelessWidget {
       ),
       SizedBox(
           height: 330,
-          child: ListView.builder(
+          child: ListView.separated(
             padding: const EdgeInsets.all(20),
             itemCount: historyData.length,
             itemBuilder: (cntx, index) => HistoryCard(historyData[index]),
+            separatorBuilder: (context, index) => const Divider(
+              color: Colors.white,
+            ),
           ))
     ]);
   }
