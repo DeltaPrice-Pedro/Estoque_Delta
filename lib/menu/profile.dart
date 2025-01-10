@@ -82,10 +82,11 @@ class Profile extends StatelessWidget {
         child: SizedBox(
             height: 330,
             child: SingleChildScrollView(
-              child: Column(
-                  children: historyData.map((history) {
-                return HistoryCard(history);
-              }).toList()),
+              child: ListView.builder(
+                padding: const EdgeInsets.all(20),
+                itemCount: historyData.length,
+                itemBuilder: (cntx, index) => HistoryCard(historyData[index]),
+              ),
             )),
       )
     ]);

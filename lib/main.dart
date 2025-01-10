@@ -32,6 +32,7 @@ class _InitPage extends State<InitPage> {
   Widget build(context) {
     return MaterialApp(
         title: 'Estoque Deltaprice',
+        theme: ThemeData(useMaterial3: true),
         home: Scaffold(
           body: Container(
             decoration: BoxDecoration(

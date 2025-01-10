@@ -6,14 +6,11 @@ class ProductCard extends StatelessWidget {
 
   final Map infos;
 
-  IconData choseIcon() {
-    int tipo = infos['type'];
-    return (tipo == 1)
-        ? Icons.bubble_chart_rounded
-        : (tipo == 2)
-            ? Icons.water_drop_rounded
-            : Icons.local_drink;
-  }
+  static const typeIcon = {
+    1: Icons.bubble_chart_rounded,
+    2: Icons.water_drop_rounded,
+    3: Icons.local_drink
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +52,7 @@ class ProductCard extends StatelessWidget {
                               : Icon(Icons.remove_circle_outline_rounded),
                           enabled: (amount != 0) ? true : false,
                           leading: Icon(
-                            choseIcon(),
+                            typeIcon[infos["type"]],
                             size: 35,
                           ),
                           iconColor: Colors.blue,
