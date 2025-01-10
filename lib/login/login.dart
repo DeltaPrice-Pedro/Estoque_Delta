@@ -47,27 +47,26 @@ class Login extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(20.0),
           alignment: Alignment.centerLeft,
-          margin: EdgeInsets.only(top: 60.0),
+          margin: EdgeInsets.only(top: 70.0),
+          color: Colors.white,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InputLogin('nome completo', nameInput),
-              InputLogin('senha', pswrdInput),
+              InputLogin('Nome completo', nameInput),
+              InputLogin('Senha', pswrdInput),
             ],
           ),
         ),
-        SizedBox(
-          height: 30,
-        ),
         //InputLogin(),
-        ElevatedButton(
-          onPressed: () {
-            print(nameInput);
-          },
-          // style: ButtonStyle(backgroundColor: Colors.white),
-          child: Text(
-            "Enviar",
-            style: GoogleFonts.poppins(fontSize: 15),
+        Padding(
+          padding: const EdgeInsets.only(top: 60.0),
+          child: ElevatedButton(
+            onPressed: method,
+            // style: ButtonStyle(backgroundColor: Colors.white),
+            child: Text(
+              "Enviar",
+              style: GoogleFonts.poppins(fontSize: 15),
+            ),
           ),
         )
       ],

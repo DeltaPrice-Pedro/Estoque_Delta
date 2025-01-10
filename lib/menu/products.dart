@@ -30,19 +30,22 @@ class _Products extends State<Products> {
           ),
         ),
       ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          ElevatedButton(
-              onPressed: () {},
-              child: Text('Refrigerante', style: GoogleFonts.poppins())),
-          ElevatedButton(
-              onPressed: () {},
-              child: Text('Suco', style: GoogleFonts.poppins())),
-          ElevatedButton(
-              onPressed: () {},
-              child: Text('Água', style: GoogleFonts.poppins()))
-        ],
+      Padding(
+        padding: const EdgeInsets.only(bottom: 10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+                onPressed: () {},
+                child: Text('Refrigerante', style: GoogleFonts.poppins())),
+            ElevatedButton(
+                onPressed: () {},
+                child: Text('Suco', style: GoogleFonts.poppins())),
+            ElevatedButton(
+                onPressed: () {},
+                child: Text('Água', style: GoogleFonts.poppins()))
+          ],
+        ),
       ),
       SizedBox(
         height: 400,

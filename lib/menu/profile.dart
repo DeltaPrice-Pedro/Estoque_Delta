@@ -77,18 +77,13 @@ class Profile extends StatelessWidget {
           fontSize: 30,
         ),
       ),
-      Padding(
-        padding: const EdgeInsets.all(20),
-        child: SizedBox(
-            height: 330,
-            child: SingleChildScrollView(
-              child: ListView.builder(
-                padding: const EdgeInsets.all(20),
-                itemCount: historyData.length,
-                itemBuilder: (cntx, index) => HistoryCard(historyData[index]),
-              ),
-            )),
-      )
+      SizedBox(
+          height: 330,
+          child: ListView.builder(
+            padding: const EdgeInsets.all(20),
+            itemCount: historyData.length,
+            itemBuilder: (cntx, index) => HistoryCard(historyData[index]),
+          ))
     ]);
   }
 }

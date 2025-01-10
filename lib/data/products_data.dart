@@ -5,7 +5,7 @@ const productsData = [
     'volum': 'volum1',
     'type': 1,
     'amount': 2,
-    'image': 'https://images.tcdn.com.br/img/img_prod/1115696/coca_cola_lata_220ml_11_1_f92e9b64840da2cb6a6da37ca150e390.jpg'
+    'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjEKkX-tz97p1PjleYBc7YNEEm-bgU9tyd8A&s'
   },
   {
     'title': 'title2',
