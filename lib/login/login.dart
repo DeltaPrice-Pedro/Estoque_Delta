@@ -1,3 +1,4 @@
+import 'package:estoque_delta/login/input_login.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 // import 'package:estoque_delta/login/inputLogin.dart';
@@ -9,6 +10,9 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(context) {
+    String nameInput = '';
+    String pswrdInput = '';
+
     return Column(
       children: [
         Container(
@@ -47,14 +51,8 @@ class Login extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'nome completo',
-                style: GoogleFonts.oswald(fontSize: 30, color: Colors.white),
-                textAlign: TextAlign.left,
-              ),
-              Text('senha',
-                  style: GoogleFonts.oswald(fontSize: 30, color: Colors.white),
-                  textAlign: TextAlign.left)
+              InputLogin('nome completo', nameInput),
+              InputLogin('senha', pswrdInput),
             ],
           ),
         ),
@@ -63,7 +61,9 @@ class Login extends StatelessWidget {
         ),
         //InputLogin(),
         ElevatedButton(
-          onPressed: method,
+          onPressed: () {
+            print(nameInput);
+          },
           // style: ButtonStyle(backgroundColor: Colors.white),
           child: Text(
             "Enviar",

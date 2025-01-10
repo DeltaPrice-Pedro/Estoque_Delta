@@ -1,17 +1,34 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
-class InputLogin extends StatefulWidget {
-  const InputLogin({super.key});
+class InputLogin extends StatelessWidget {
+  InputLogin(this.name, this.valueEntered, {super.key});
 
-  @override
-  State<InputLogin> createState() {
-    return _InputLogin();
-  }
-}
+  final String name;
+  String valueEntered = '';
 
-class _InputLogin extends State<InputLogin> {
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return Padding(
+      padding: EdgeInsets.all(20),
+      child: Column(
+        children: [
+          TextField(
+            maxLength: 50,
+            onSubmitted: (value) {
+              valueEntered = value;
+            },
+            decoration: InputDecoration(
+              label: Text(
+                name,
+                style: GoogleFonts.oswald(fontSize: 20, color: Colors.white),
+                textAlign: TextAlign.left,
+                selectionColor: Colors.white,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
