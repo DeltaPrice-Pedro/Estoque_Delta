@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:estoque_delta/login/login.dart';
 import 'package:estoque_delta/menu/menu.dart';
 
-void main() => runApp(const InitPage());
+void main() => runApp(const App());
 
-class InitPage extends StatefulWidget {
-  const InitPage({super.key});
+class App extends StatefulWidget {
+  const App({super.key});
 
   @override
-  State<InitPage> createState() {
-    return _InitPage();
+  State<App> createState() {
+    return _App();
   }
 }
 
-class _InitPage extends State<InitPage> {
+class _App extends State<App> {
   Widget? activePage;
 
   @override
