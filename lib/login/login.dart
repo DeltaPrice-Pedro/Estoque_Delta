@@ -1,17 +1,25 @@
 import 'package:estoque_delta/login/input_login.dart';
+import 'package:estoque_delta/models/warning_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 // import 'package:estoque_delta/login/inputLogin.dart';
 
 class Login extends StatelessWidget {
   const Login(this.method, {super.key});
-
   final void Function() method;
 
   @override
   Widget build(context) {
-    String nameInput = '';
-    String pswrdInput = '';
+    String nameUser = '';
+    String psswrdUser = '';
+
+    void validAcess() {
+      if (nameUser == '' && psswrdUser == '') {
+        showDialog(context: context, builder: (context) => WarningDialog());
+      } else {
+        method;
+      }
+    }
 
     return Column(
       children: [
@@ -52,8 +60,12 @@ class Login extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InputLogin('Nome completo', nameInput),
-              InputLogin('Senha', pswrdInput),
+              InputLogin('Nome completo', (String value) {
+                nameUser = value;
+              }),
+              InputLogin('Senha', (String value) {
+                psswrdUser = value;
+              }),
             ],
           ),
         ),
@@ -61,7 +73,7 @@ class Login extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 60.0),
           child: ElevatedButton(
-            onPressed: method,
+            onPressed: validAcess,
             // style: ButtonStyle(backgroundColor: Colors.white),
             child: Text(
               "Enviar",

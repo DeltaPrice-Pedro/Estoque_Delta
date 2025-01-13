@@ -2,10 +2,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 class InputLogin extends StatelessWidget {
-  const InputLogin(this.name, this.valueEntered, {super.key});
+  const InputLogin(this.title, this.method, {super.key});
 
-  final String name;
-  final String valueEntered;
+  final String title;
+  final void Function(String) method;
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +15,10 @@ class InputLogin extends StatelessWidget {
         children: [
           TextField(
             maxLength: 50,
-            // onSubmitted: (value) {
-            //   valueEntered = value;
-            // },
+            onSubmitted: method,
             decoration: InputDecoration(
               label: Text(
-                name,
+                title,
                 style: GoogleFonts.oswald(fontSize: 20, color: Colors.black),
                 textAlign: TextAlign.left,
                 selectionColor: const Color.fromARGB(255, 31, 76, 255),
