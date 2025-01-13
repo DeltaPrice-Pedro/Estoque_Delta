@@ -1,54 +1,34 @@
 import 'package:flutter/material.dart';
 
 class WarningDialog extends StatelessWidget {
-  const WarningDialog({super.key});
+  const WarningDialog(this.reason, {super.key});
+
+  final String reason;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       elevation: 8.0,
-      icon: Icon(Icons.attach_money_sharp, size: 30),
-      iconColor: Colors.blue,
+      icon: Icon(Icons.warning_rounded, size: 30),
+      iconColor: Colors.red,
       clipBehavior: Clip.antiAlias,
       scrollable: true,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          side: BorderSide(
+            color: const Color.fromARGB(255, 172, 43, 34),
+            width: 4.0,
+          )),
       title: Text(
-        'Solicitar pedido',
+        'Dados inválidos',
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
       ),
-      content: Column(
-        children: [
-          Text(
-            'Confirmar a compra do produto a baixo?',
-            style: TextStyle(fontSize: 15),
-          ),
-          Card(
-              elevation: 5,
-              clipBehavior: Clip.antiAlias,
-              child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: SizedBox(
-                      height: 100,
-                      child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            AspectRatio(
-                              aspectRatio: 1.0,
-                            ),
-                            Expanded(
-                                child: Padding(
-                              padding: const EdgeInsets.fromLTRB(
-                                  0.0, 12.5, 2.0, 0.0),
-                              child: ListTile(
-                                titleAlignment: ListTileTitleAlignment.center,
-                              ),
-                            ))
-                          ]))))
-        ],
+      content: Text(
+        reason,
+        style: TextStyle(fontSize: 15),
       ),
       actions: [
-        TextButton(
-            onPressed: () => Navigator.pop(context), child: Text('Cancelar')),
-        TextButton(onPressed: () {}, child: Text('Confirmar')),
+        TextButton(onPressed: () => Navigator.pop(context), child: Text('OK')),
       ],
     );
   }

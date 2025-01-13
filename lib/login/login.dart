@@ -15,9 +15,11 @@ class Login extends StatelessWidget {
 
     void validAcess() {
       if (nameUser == '' && psswrdUser == '') {
-        showDialog(context: context, builder: (context) => WarningDialog());
+        showDialog(
+            context: context,
+            builder: (context) => WarningDialog('Motivo do erro'));
       } else {
-        method;
+        method();
       }
     }
 
@@ -38,7 +40,7 @@ class Login extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                'Bem vindo(a) ao estoque',
+                'Bem vindo(a) a lojinha',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(fontSize: 25.0),
               ),
