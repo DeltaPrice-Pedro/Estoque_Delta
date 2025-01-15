@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "640328016998",
+    "project_id": "estoque-deltaprice",
+    "storage_bucket": "estoque-deltaprice.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640328016998:android:3d14298c4ecd53dfafb9a7",
+        "android_client_info": {
+          "package_name": "com.example.estoque_delta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApw_28WKf2_wxBEw-k23uD-myr7Ptukd8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

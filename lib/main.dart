@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:estoque_delta/login/login.dart';
 import 'package:estoque_delta/menu/menu.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() => runApp(const App());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const App());
+}
 
 class App extends StatefulWidget {
   const App({super.key});
