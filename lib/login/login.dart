@@ -6,7 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 final _firebase = FirebaseAuth.instance;
 final _formKey = GlobalKey<FormState>();
-var _phoneUser = '';
+var _emailUser = '';
+var _passwrdUser = '';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -22,7 +23,8 @@ class Login extends StatelessWidget {
 
   _sendToFirebase() {
     try {
-      final userCredentials = _firebase.signInWithPhoneNumber(_phoneUser);
+      final userCredentials = _firebase.signInWithEmailAndPassword(
+          email: _emailUser, password: _passwrdUser);
       print(userCredentials);
     } on FirebaseAuthException catch (error) {
       WarningDialog(error.message ?? 'Dados inválidos');
@@ -75,32 +77,57 @@ class Login extends StatelessWidget {
                 margin: EdgeInsets.only(top: 70.0),
                 color: Colors.white,
                 child: Form(
-                  child: TextFormField(
-                      decoration: const InputDecoration(
-                          labelText: 'Número de telefone'),
-                      keyboardType: TextInputType.phone,
-                      validator: (value) {
-                        if (value == null ||
-                            value.trim().isEmpty ||
-                            value.trim().length < 9) {
-                          return 'Favor inserir número de telefone válido';
-                        }
-                        return null;
-                      },
-                      onSaved: (newValue) {
-                        _phoneUser = newValue!;
-                      }),
-                ),
-              ),
-              //InputLogin(),
-              Padding(
-                padding: const EdgeInsets.only(top: 60.0),
-                child: ElevatedButton(
-                  onPressed: _submit,
-                  // style: ButtonStyle(backgroundColor: Colors.white),
-                  child: Text(
-                    "Enviar",
-                    style: GoogleFonts.poppins(fontSize: 15),
+                  key: _formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextFormField(
+                        decoration:
+                            const InputDecoration(labelText: 'Endereço de e-mail'),
+                        keyboardType: TextInputType.emailAddress,
+                        autocorrect: false,
+                        textCapitalization: TextCapitalization.none,
+                        validator: (value) {
+                          if (value == null ||
+                              value.trim().isEmpty ||
+                              !value.contains('@')) {
+                            return 'Favor insira um endereço de e-mail válido.';
+                          }
+
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _emailUser = value!;
+                        },
+                      ),
+                      TextFormField(
+                        decoration:
+                            const InputDecoration(labelText: 'Senha'),
+                        obscureText: true,
+                        validator: (value) {
+                          if (value == null || value.trim().length < 6) {
+                            return 'A senha deve ter no mínimo 6 caracteres.';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _passwrdUser = value!;
+                        },
+                      ),
+
+                      //InputLogin(),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 60.0),
+                        child: ElevatedButton(
+                          onPressed: _submit,
+                          // style: ButtonStyle(backgroundColor: Colors.white),
+                          child: Text(
+                            "Enviar",
+                            style: GoogleFonts.poppins(fontSize: 15),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
               )
