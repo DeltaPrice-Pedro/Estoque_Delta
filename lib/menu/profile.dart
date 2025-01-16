@@ -21,6 +21,9 @@ class Profile extends StatelessWidget {
   @override
   Widget build(context) {
     return Column(children: [
+      SizedBox(
+              height: 20,
+            ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         verticalDirection: VerticalDirection.down,

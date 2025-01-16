@@ -49,9 +49,14 @@ class _Menu extends State<Menu> {
         ],
       ),
       body: Center(
-        child: Column(
-          children: [
-            // Container(
+        child: activatePage,
+      ),
+    );
+  }
+}
+
+
+ // Container(
             //   color: Colors.white,
             //   padding: EdgeInsets.all(30),
             //   child: Row(
@@ -82,13 +87,3 @@ class _Menu extends State<Menu> {
             //     ],
             //   ),
             // ),
-            SizedBox(
-              height: 20,
-            ),
-            activatePage,
-          ],
-        ),
-      ),
-    );
-  }
-}
