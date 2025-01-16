@@ -2,11 +2,13 @@ import 'package:estoque_delta/login/input_login.dart';
 import 'package:estoque_delta/models/warning_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-// import 'package:estoque_delta/login/inputLogin.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+final _firebase = FirebaseAuth.instance;
 
 class Login extends StatelessWidget {
   const Login(this.method, {super.key});
   final void Function() method;
+
 
   @override
   Widget build(context) {
