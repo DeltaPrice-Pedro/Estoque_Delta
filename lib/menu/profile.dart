@@ -1,6 +1,7 @@
 import 'package:estoque_delta/data/history_data.dart';
 import 'package:estoque_delta/models/history_card.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
@@ -46,7 +47,9 @@ class Profile extends StatelessWidget {
             ],
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+            },
             icon: Icon(Icons.exit_to_app_outlined),
             alignment: Alignment.centerRight,
             style: ElevatedButton.styleFrom(

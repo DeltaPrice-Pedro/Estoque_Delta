@@ -28,46 +28,66 @@ class _Menu extends State<Menu> {
 
   @override
   Widget build(context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Column(
-        children: [
-          Container(
-            color: Colors.white,
-            padding: EdgeInsets.all(30),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              verticalDirection: VerticalDirection.up,
-              children: [
-                Image.asset(
-                  'assets/images/deltaprice_hori.png',
-                  width: 300,
-                ),
-                SizedBox(
-                  height: 70,
-                  width: 2,
-                  child: ColoredBox(
-                    color: Colors.blue,
-                  ),
-                ),
-                IconButton(
-                  onPressed: switchPage,
-                  icon: menuState
-                      ? Icon((Icons.account_circle_outlined))
-                      : Icon(Icons.account_circle_rounded),
-                  alignment: Alignment.center,
-                  color: Colors.lightBlue,
-                  splashColor: Colors.lightBlueAccent,
-                  iconSize: 40,
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          activatePage,
+    return Scaffold(
+      appBar: AppBar(
+        title: Image.asset(
+          'assets/images/deltaprice_hori.png',
+          width: 300,
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: switchPage,
+            icon: menuState
+                ? Icon((Icons.account_circle_outlined))
+                : Icon(Icons.account_circle_rounded),
+            alignment: Alignment.center,
+            color: Colors.lightBlue,
+            splashColor: Colors.lightBlueAccent,
+            iconSize: 40,
+          )
         ],
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            // Container(
+            //   color: Colors.white,
+            //   padding: EdgeInsets.all(30),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     verticalDirection: VerticalDirection.up,
+            //     children: [
+            //       Image.asset(
+            //         'assets/images/deltaprice_hori.png',
+            //         width: 300,
+            //       ),
+            //       SizedBox(
+            //         height: 70,
+            //         width: 2,
+            //         child: ColoredBox(
+            //           color: Colors.blue,
+            //         ),
+            //       ),
+            //       IconButton(
+            //         onPressed: switchPage,
+            //         icon: menuState
+            //             ? Icon((Icons.account_circle_outlined))
+            //             : Icon(Icons.account_circle_rounded),
+            //         alignment: Alignment.center,
+            //         color: Colors.lightBlue,
+            //         splashColor: Colors.lightBlueAccent,
+            //         iconSize: 40,
+            //       )
+            //     ],
+            //   ),
+            // ),
+            SizedBox(
+              height: 20,
+            ),
+            activatePage,
+          ],
+        ),
       ),
     );
   }
