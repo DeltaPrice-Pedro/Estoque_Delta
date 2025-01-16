@@ -27,7 +27,10 @@ class Login extends StatelessWidget {
           email: _emailUser, password: _passwrdUser);
       print(userCredentials);
     } on FirebaseAuthException catch (error) {
-      WarningDialog(error.message ?? 'Dados inválidos');
+      showDialog(
+          context: (context),
+          builder: (context) =>
+              WarningDialog(error.message ?? 'Dados inválidos'));
     }
   }
 
@@ -82,8 +85,8 @@ class Login extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       TextFormField(
-                        decoration:
-                            const InputDecoration(labelText: 'Endereço de e-mail'),
+                        decoration: const InputDecoration(
+                            labelText: 'Endereço de e-mail'),
                         keyboardType: TextInputType.emailAddress,
                         autocorrect: false,
                         textCapitalization: TextCapitalization.none,
@@ -101,8 +104,7 @@ class Login extends StatelessWidget {
                         },
                       ),
                       TextFormField(
-                        decoration:
-                            const InputDecoration(labelText: 'Senha'),
+                        decoration: const InputDecoration(labelText: 'Senha'),
                         obscureText: true,
                         validator: (value) {
                           if (value == null || value.trim().length < 6) {

@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:estoque_delta/login/login.dart';
-import 'package:estoque_delta/menu/menu.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:estoque_delta/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:estoque_delta/login/login.dart';
+import 'package:estoque_delta/menu/menu.dart';
+import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -35,7 +35,7 @@ class App extends StatelessWidget {
               if (snapshot.hasData) {
                 return const Menu();
               }
-              return Login();
+              return const Login();
             }));
   }
 }
