@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:estoque_delta/models/menu_dialog.dart';
+import 'package:estoque_delta/menu/widgets/product_dialog.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard(this.infos, {super.key});

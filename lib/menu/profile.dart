@@ -1,5 +1,5 @@
 import 'package:estoque_delta/data/history_data.dart';
-import 'package:estoque_delta/models/history_card.dart';
+import 'package:estoque_delta/menu/widgets/history_card.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

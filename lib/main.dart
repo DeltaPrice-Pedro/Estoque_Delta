@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:estoque_delta/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:estoque_delta/login/login.dart';
 import 'package:estoque_delta/menu/menu.dart';
@@ -29,7 +28,7 @@ class App extends StatelessWidget {
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (cntx, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const SplashScreen();
+                return const Scaffold(body: Text('Carregando...'),);
               }
 
               if (snapshot.hasData) {

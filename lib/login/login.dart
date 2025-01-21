@@ -9,28 +9,36 @@ final _formKey = GlobalKey<FormState>();
 var _emailUser = '';
 var _passwrdUser = '';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
 
+  @override
+  State<Login> createState() {
+    return _Login();
+  }
+}
+
+class _Login extends State<Login> {
   void _submit() async {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      _sendToFirebase();
-    } else {
+    final isValid = _formKey.currentState!.validate();
+
+    if (!isValid) {
       return;
     }
+    _formKey.currentState!.save();
+
+    await _sendToFirebase();
   }
 
-  _sendToFirebase() {
+  Future<void> _sendToFirebase() async {
     try {
-      final userCredentials = _firebase.signInWithEmailAndPassword(
+      final userCredentials = await _firebase.signInWithEmailAndPassword(
           email: _emailUser, password: _passwrdUser);
       print(userCredentials);
     } on FirebaseAuthException catch (error) {
       showDialog(
-          context: (context),
-          builder: (context) =>
-              WarningDialog(error.message ?? 'Dados inválidos'));
+          context: context,
+          builder: (cntx) => WarningDialog(error.message ?? 'Dados inválidos'));
     }
   }
 
