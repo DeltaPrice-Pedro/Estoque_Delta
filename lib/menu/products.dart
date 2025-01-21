@@ -1,5 +1,6 @@
-import 'package:estoque_delta/data/products_data.dart';
 import 'package:estoque_delta/menu/widgets/product_card.dart';
+import 'package:estoque_delta/data/products_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -17,8 +18,8 @@ class _Products extends State<Products> {
   Widget build(context) {
     return Column(children: [
       SizedBox(
-              height: 20,
-            ),
+        height: 20,
+      ),
       Text(
         'Produtos disponíveis',
         style: GoogleFonts.poppins(color: Colors.white, fontSize: 40),
@@ -51,13 +52,47 @@ class _Products extends State<Products> {
         ),
       ),
       SizedBox(
-        height: 400,
-        child: ListView.builder(
-          padding: const EdgeInsets.all(20),
-          itemCount: productsData.length,
-          itemBuilder: (cntx, index) => ProductCard(productsData[index]),
-        ),
-      ),
+          height: 400,
+          child: StreamBuilder(
+            stream:
+                FirebaseFirestore.instance.collection('products').snapshots(),
+            builder: (cntx, productsSnapshots) {
+
+              if (productsSnapshots.connectionState ==
+                  ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              if (!productsSnapshots.hasData ||
+                  productsSnapshots.data!.docs.isEmpty) {
+                return const Center(
+                  child: Text('Sem produtos disponíveis'),
+                );
+              }
+
+              if (productsSnapshots.hasError) {
+                return const Center(
+                  child: Text('Algo deu errado...'),
+                );
+              }
+
+              final loadedProducts = productsSnapshots.data!.docs;
+
+              return ListView.builder(
+                  itemCount: loadedProducts.length,
+                  itemBuilder: (cntx, index) =>
+                      ProductCard(loadedProducts[index].data()));
+            },
+          )),
     ]);
   }
 }
+
+
+// ListView.builder(
+//           padding: const EdgeInsets.all(20),
+//           itemCount: productsData.length,
+//           itemBuilder: (cntx, index) => ProductCard(productsData[index]),
+//         ),

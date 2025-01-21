@@ -8,8 +8,8 @@ class ProductDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String titulo = infos['title'];
-    String volume = infos['volum'];
-    String preco = infos['price'];
+    int volume = infos['volumn'];
+    double preco = infos['price'];
     String urlImage = infos['image'];
 
     return AlertDialog(

@@ -7,16 +7,16 @@ class ProductCard extends StatelessWidget {
   final Map infos;
 
   static const typeIcon = {
-    1: Icons.bubble_chart_rounded,
-    2: Icons.water_drop_rounded,
-    3: Icons.local_drink
+    'soda': Icons.bubble_chart_rounded,
+    'juice': Icons.water_drop_rounded,
+    'water': Icons.local_drink
   };
 
   @override
   Widget build(BuildContext context) {
     String titulo = infos['title'];
-    String volume = infos['volum'];
-    String preco = infos['price'];
+    int volume = infos['volumn'];
+    double preco = infos['price'];
     int amount = infos['amount'];
     String urlImage = infos['image'];
 
