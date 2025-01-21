@@ -12,7 +12,7 @@ class Menu extends StatefulWidget {
 }
 
 class _Menu extends State<Menu> {
-  Widget profilePage = Profile('Wellington Celestino');
+  Widget profilePage = Profile();
   Widget productsPage = Products();
   Widget activatePage = Products();
   IconData activatePerfil = Icons.account_circle_outlined;

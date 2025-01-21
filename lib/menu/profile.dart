@@ -1,13 +1,12 @@
-import 'package:estoque_delta/data/history_data.dart';
 import 'package:estoque_delta/menu/widgets/history_card.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
-  const Profile(this.nomeUsuario, {super.key});
-
-  final String nomeUsuario;
+  const Profile({super.key});
 
   String greeting() {
     int currentHour = DateTime.now().hour - 3;
@@ -20,10 +19,16 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(context) {
+    // final user = FirebaseAuth.instance.currentUser!;
+    // final userName = FirebaseFirestore.instance
+    //     .collection('users')
+    //     .doc(user.uid)
+    //     .get();
+
     return Column(children: [
       SizedBox(
-              height: 20,
-            ),
+        height: 20,
+      ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         verticalDirection: VerticalDirection.down,
@@ -40,7 +45,8 @@ class Profile extends StatelessWidget {
                 ),
               ),
               Text(
-                nomeUsuario,
+                // userName.data()!['name'],
+                'Funcionário',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.dmSans(
                   color: Colors.white,
@@ -85,14 +91,52 @@ class Profile extends StatelessWidget {
       ),
       SizedBox(
           height: 330,
-          child: ListView.separated(
-            padding: const EdgeInsets.all(20),
-            itemCount: historyData.length,
-            itemBuilder: (cntx, index) => HistoryCard(historyData[index]),
-            separatorBuilder: (context, index) => const Divider(
-              color: Colors.white,
-            ),
+          child: StreamBuilder(
+            stream:
+                FirebaseFirestore.instance.collection('history').snapshots(),
+            builder: (cntx, productsSnapshots) {
+              if (productsSnapshots.connectionState ==
+                  ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              if (!productsSnapshots.hasData ||
+                  productsSnapshots.data!.docs.isEmpty) {
+                return const Center(
+                  child: Text('Sem produtos no histórico'),
+                );
+              }
+
+              if (productsSnapshots.hasError) {
+                return const Center(
+                  child: Text('Algo deu errado...'),
+                );
+              }
+
+              final loadedHistory = productsSnapshots.data!.docs;
+
+              return ListView.separated(
+                  padding: const EdgeInsets.all(20),
+                  separatorBuilder: (context, index) => const Divider(
+                        color: Colors.white,
+                      ),
+                  itemCount: loadedHistory.length,
+                  itemBuilder: (cntx, index) =>
+                      HistoryCard(loadedHistory[index].data()));
+            },
           ))
     ]);
   }
 }
+
+
+// ListView.separated(
+//             padding: const EdgeInsets.all(20),
+//             itemCount: historyData.length,
+//             itemBuilder: (cntx, index) => HistoryCard(historyData[index]),
+//             separatorBuilder: (context, index) => const Divider(
+//               color: Colors.white,
+//             ),
+//           )

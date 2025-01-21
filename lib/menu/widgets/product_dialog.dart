@@ -1,9 +1,33 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class ProductDialog extends StatelessWidget {
+class ProductDialog extends StatefulWidget {
   const ProductDialog(this.infos, {super.key});
 
   final Map infos;
+
+  @override
+  State<ProductDialog> createState() {
+    return _Product(infos);
+  }
+}
+
+class _Product extends State<ProductDialog> {
+  _Product(this.infos);
+
+  final Map infos;
+
+  void _submit() async {
+    final user = FirebaseAuth.instance.currentUser!;
+    await FirebaseFirestore.instance.collection('history').doc(user.uid).set({
+      'productName': infos['title'],
+      'productPrice': infos['price'],
+      'purchaseDateTime': DateTime.now()
+    });
+
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +88,7 @@ class ProductDialog extends StatelessWidget {
       actions: [
         TextButton(
             onPressed: () => Navigator.pop(context), child: Text('Cancelar')),
-        TextButton(onPressed: () {}, child: Text('Confirmar')),
+        TextButton(onPressed: _submit, child: Text('Confirmar')),
       ],
     );
   }

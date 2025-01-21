@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class HistoryCard extends StatelessWidget {
@@ -7,10 +8,9 @@ class HistoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String title = history['name'];
-    String volum = history['volum'];
-    String datetime = history['datetime'];
-    String preco = history['price'];
+    String title = history['productName'];
+    Timestamp datetime = history['purchaseDateTime'];
+    double preco = history['productPrice'];
 
     return Card.outlined(
         shape: RoundedRectangleBorder(
@@ -29,7 +29,7 @@ class HistoryCard extends StatelessWidget {
                   Icons.attach_money_sharp,
                   size: 35,
                 ),
-                title: Text('$title - $volum ml'),
+                title: Text(title),
                 titleAlignment: ListTileTitleAlignment.center,
                 subtitle: Text(
                   '$datetime\nR\$ $preco',
