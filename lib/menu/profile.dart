@@ -1,13 +1,19 @@
 import 'package:estoque_delta/menu/widgets/history_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({super.key});
 
+  @override
+  State<Profile> createState() {
+    return _Profile();
+  }
+}
+
+class _Profile extends State<Profile> {
   String greeting() {
     int currentHour = DateTime.now().hour - 3;
     return (currentHour < 12)
@@ -17,14 +23,13 @@ class Profile extends StatelessWidget {
             : 'Boa noite, ';
   }
 
+  final _userName = FirebaseFirestore.instance
+      .collection('users')
+      .doc(FirebaseAuth.instance.currentUser!.uid)
+      .get();
+
   @override
   Widget build(context) {
-    // final user = FirebaseAuth.instance.currentUser!;
-    // final userName = FirebaseFirestore.instance
-    //     .collection('users')
-    //     .doc(user.uid)
-    //     .get();
-
     return Column(children: [
       SizedBox(
         height: 20,
@@ -44,15 +49,20 @@ class Profile extends StatelessWidget {
                   fontSize: 25,
                 ),
               ),
-              Text(
-                // userName.data()!['name'],
-                'Funcionário',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.dmSans(
-                  color: Colors.white,
-                  fontSize: 25,
-                ),
-              ),
+              FutureBuilder(
+                  future: _userName,
+                  builder: (cntx, snapshot) {
+                    return Text(
+                      (!snapshot.hasData)
+                          ? ''
+                          : snapshot.data!['name'],
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.dmSans(
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
+                    );
+                  })
             ],
           ),
           IconButton(
