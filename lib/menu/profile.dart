@@ -14,14 +14,7 @@ class Profile extends StatefulWidget {
 }
 
 class _Profile extends State<Profile> {
-  String greeting() {
-    int currentHour = DateTime.now().hour - 3;
-    return (currentHour < 12)
-        ? 'Bom dia, '
-        : (currentHour > 12 && currentHour < 18)
-            ? 'Boa tarde, '
-            : 'Boa noite, ';
-  }
+  final int currentHour = DateTime.now().hour - 3;
 
   final _userName = FirebaseFirestore.instance
       .collection('users')
@@ -41,7 +34,11 @@ class _Profile extends State<Profile> {
           Row(
             children: [
               Text(
-                greeting(),
+                (currentHour < 12)
+                    ? 'Bom dia, '
+                    : (currentHour > 12 && currentHour < 18)
+                        ? 'Boa tarde, '
+                        : 'Boa noite, ',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.dmSans(
                   color: Colors.white,
@@ -53,9 +50,7 @@ class _Profile extends State<Profile> {
                   future: _userName,
                   builder: (cntx, snapshot) {
                     return Text(
-                      (!snapshot.hasData)
-                          ? ''
-                          : snapshot.data!['name'],
+                      (!snapshot.hasData) ? '' : snapshot.data!['name'],
                       textAlign: TextAlign.center,
                       style: GoogleFonts.dmSans(
                         color: Colors.white,

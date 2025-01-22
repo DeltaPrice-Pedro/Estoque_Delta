@@ -27,8 +27,13 @@ class _Product extends State<ProductDialog> {
     activateContent = QueryContent(infos);
     actions = [
       TextButton(
-          onPressed: () => Navigator.pop(context), child: Text('Fechar')),
-      TextButton(onPressed: _submit, child: Text('Confirmar')),
+          onPressed: () => Navigator.pop(context),
+          style: TextButton.styleFrom(backgroundColor: Colors.redAccent),
+          child: Text('Fechar')),
+      TextButton(
+          onPressed: _submit,
+          style: TextButton.styleFrom(backgroundColor: Colors.green),
+          child: Text('Confirmar')),
     ];
     super.initState();
   }
@@ -61,6 +66,7 @@ class _Product extends State<ProductDialog> {
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
       ),
       content: activateContent,
+      actionsAlignment: MainAxisAlignment.spaceAround,
       actions: actions,
     );
   }
