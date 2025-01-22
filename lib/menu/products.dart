@@ -13,6 +13,16 @@ class Products extends StatefulWidget {
 }
 
 class _Products extends State<Products> {
+  List<String> itensFilter = ['soda', 'water', 'juice'];
+
+  void updtFilter(String type) {
+    setState(() {
+      (itensFilter.contains(type))
+          ? itensFilter.remove(type)
+          : itensFilter.add(type);
+    });
+  }
+
   @override
   Widget build(context) {
     return Column(children: [
@@ -39,24 +49,31 @@ class _Products extends State<Products> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () => updtFilter('soda'),
                 child: Text('Refrigerante', style: GoogleFonts.poppins())),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () => updtFilter('juice'),
                 child: Text('Suco', style: GoogleFonts.poppins())),
             ElevatedButton(
-                onPressed: () {},
-                child: Text('Água', style: GoogleFonts.poppins()))
+                onPressed: () => updtFilter('water'),
+                child: Text('Água', style: GoogleFonts.poppins())),
+            ElevatedButton(
+                onPressed: () => updtFilter('Cookie'),
+                child: Text('Cookie', style: GoogleFonts.poppins())),
+            ElevatedButton(
+                onPressed: () => updtFilter('Chips'),
+                child: Text('Chips', style: GoogleFonts.poppins()))
           ],
         ),
       ),
       SizedBox(
           height: 400,
           child: StreamBuilder(
-            stream:
-                FirebaseFirestore.instance.collection('products').snapshots(),
+            stream: FirebaseFirestore.instance
+                .collection('products')
+                .where('type', whereIn: itensFilter)
+                .snapshots(),
             builder: (cntx, productsSnapshots) {
-
               if (productsSnapshots.connectionState ==
                   ConnectionState.waiting) {
                 return const Center(

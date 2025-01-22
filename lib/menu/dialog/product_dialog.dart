@@ -29,11 +29,17 @@ class _Product extends State<ProductDialog> {
       TextButton(
           onPressed: () => Navigator.pop(context),
           style: TextButton.styleFrom(backgroundColor: Colors.redAccent),
-          child: Text('Fechar')),
+          child: Text(
+            'Fechar',
+            style: TextStyle(color: Colors.black),
+          )),
       TextButton(
           onPressed: _submit,
           style: TextButton.styleFrom(backgroundColor: Colors.green),
-          child: Text('Confirmar')),
+          child: Text(
+            'Confirmar',
+            style: TextStyle(color: Colors.black),
+          )),
     ];
     super.initState();
   }
