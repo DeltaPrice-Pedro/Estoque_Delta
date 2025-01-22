@@ -45,6 +45,7 @@ class _Login extends State<Login> {
   @override
   Widget build(context) {
     return Scaffold(
+      backgroundColor: Colors.blueAccent,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
