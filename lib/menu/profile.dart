@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
+final String userUid = FirebaseAuth.instance.currentUser!.uid;
+
 class Profile extends StatefulWidget {
   const Profile({super.key});
 
@@ -16,10 +18,8 @@ class Profile extends StatefulWidget {
 class _Profile extends State<Profile> {
   final int currentHour = DateTime.now().hour - 3;
 
-  final _userName = FirebaseFirestore.instance
-      .collection('users')
-      .doc(FirebaseAuth.instance.currentUser!.uid)
-      .get();
+  final _userName =
+      FirebaseFirestore.instance.collection('users').doc(userUid).get();
 
   @override
   Widget build(context) {
@@ -28,7 +28,7 @@ class _Profile extends State<Profile> {
         height: 20,
       ),
       Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         verticalDirection: VerticalDirection.down,
         children: [
           Row(
@@ -43,7 +43,7 @@ class _Profile extends State<Profile> {
                 style: GoogleFonts.dmSans(
                   color: Colors.white,
                   fontStyle: FontStyle.italic,
-                  fontSize: 25,
+                  fontSize: 30,
                 ),
               ),
               FutureBuilder(
@@ -54,7 +54,7 @@ class _Profile extends State<Profile> {
                       textAlign: TextAlign.center,
                       style: GoogleFonts.dmSans(
                         color: Colors.white,
-                        fontSize: 25,
+                        fontSize: 30,
                       ),
                     );
                   })
@@ -97,8 +97,11 @@ class _Profile extends State<Profile> {
       SizedBox(
           height: 330,
           child: StreamBuilder(
-            stream:
-                FirebaseFirestore.instance.collection('history').snapshots(),
+            stream: FirebaseFirestore.instance
+                .collection('history')
+                .where('userUid',
+                    isEqualTo: userUid)
+                .snapshots(),
             builder: (cntx, productsSnapshots) {
               if (productsSnapshots.connectionState ==
                   ConnectionState.waiting) {
