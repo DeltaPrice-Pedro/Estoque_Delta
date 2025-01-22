@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
+List<String> itensFilter = ['soda', 'water', 'juice'];
+
 class Products extends StatefulWidget {
   const Products({super.key});
 
@@ -13,9 +15,12 @@ class Products extends StatefulWidget {
 }
 
 class _Products extends State<Products> {
-  List<String> itensFilter = ['soda', 'water', 'juice'];
+  int itensMaxLenght = itensFilter.length;
 
   void updtFilter(String type) {
+    if (itensFilter.length == itensMaxLenght) {
+      itensFilter.clear();
+    }
     setState(() {
       (itensFilter.contains(type))
           ? itensFilter.remove(type)
@@ -45,24 +50,30 @@ class _Products extends State<Products> {
       ),
       Padding(
         padding: const EdgeInsets.only(bottom: 10.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Column(
           children: [
-            ElevatedButton(
-                onPressed: () => updtFilter('soda'),
-                child: Text('Refrigerante', style: GoogleFonts.poppins())),
-            ElevatedButton(
-                onPressed: () => updtFilter('juice'),
-                child: Text('Suco', style: GoogleFonts.poppins())),
-            ElevatedButton(
-                onPressed: () => updtFilter('water'),
-                child: Text('Água', style: GoogleFonts.poppins())),
-            ElevatedButton(
-                onPressed: () => updtFilter('Cookie'),
-                child: Text('Cookie', style: GoogleFonts.poppins())),
-            ElevatedButton(
-                onPressed: () => updtFilter('Chips'),
-                child: Text('Chips', style: GoogleFonts.poppins()))
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              ElevatedButton(
+                  onPressed: () => updtFilter('soda'),
+                  child: Text('Refrigerante', style: GoogleFonts.poppins())),
+              ElevatedButton(
+                  onPressed: () => updtFilter('juice'),
+                  child: Text('Suco', style: GoogleFonts.poppins())),
+              ElevatedButton(
+                  onPressed: () => updtFilter('water'),
+                  child: Text('Água', style: GoogleFonts.poppins())),
+            ]),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(
+                    onPressed: () => updtFilter('chips'),
+                    child: Text('Chips', style: GoogleFonts.poppins())),
+                ElevatedButton(
+                    onPressed: () => updtFilter('candy'),
+                    child: Text('Doces', style: GoogleFonts.poppins())),
+              ],
+            ),
           ],
         ),
       ),

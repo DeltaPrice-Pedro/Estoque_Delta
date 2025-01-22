@@ -36,7 +36,7 @@ class _Profile extends State<Profile> {
               Text(
                 (currentHour < 12)
                     ? 'Bom dia, '
-                    : (currentHour > 12 && currentHour < 18)
+                    : (currentHour >= 12 && currentHour < 18)
                         ? 'Boa tarde, '
                         : 'Boa noite, ',
                 textAlign: TextAlign.center,
@@ -54,6 +54,7 @@ class _Profile extends State<Profile> {
                       textAlign: TextAlign.center,
                       style: GoogleFonts.dmSans(
                         color: Colors.white,
+                        fontStyle: FontStyle.italic,
                         fontSize: 30,
                       ),
                     );
