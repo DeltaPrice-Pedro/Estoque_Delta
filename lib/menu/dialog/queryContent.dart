@@ -15,7 +15,7 @@ class QueryContent extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Confirmar a compra do produto a baixo?',
+          'Confirmar a escolher o produto a baixo?',
           style: TextStyle(fontSize: 15),
         ),
         Card(

@@ -7,7 +7,7 @@ class ConfirmContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       Text(
-        'Compra do produto CONFIRMADA',
+        'Escolha do produto CONFIRMADA',
         style: TextStyle(fontSize: 15),
       ),
       Icon(

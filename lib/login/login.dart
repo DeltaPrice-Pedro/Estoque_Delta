@@ -69,7 +69,7 @@ class _Login extends State<Login> {
                 child: Column(
                   children: [
                     Text(
-                      'Bem vindo(a) a lojinha',
+                      'Ação entre amigos',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(fontSize: 25.0),
                     ),
