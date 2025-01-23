@@ -25,7 +25,7 @@ class _Products extends State<Products> {
           itensFilter.add(type);
         } else {
           if (itensFilter.length - 1 == 0) {
-            itensFilter = itensFilterBase;
+            itensFilter = List<String>.from(itensFilterBase);
           } else {
             itensFilter.remove(type);
           }
