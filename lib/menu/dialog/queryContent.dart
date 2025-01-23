@@ -7,9 +7,8 @@ class QueryContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String titulo = infos['title'];
-    int volume = infos['volumn'];
-    double preco = infos['price'];
+    String? titulo = infos['title'];
+    double? preco = infos['price'];
     String urlImage = infos['image'];
 
     return Column(
@@ -40,7 +39,7 @@ class QueryContent extends StatelessWidget {
                             padding:
                                 const EdgeInsets.fromLTRB(0.0, 12.5, 2.0, 0.0),
                             child: ListTile(
-                              title: Text('$titulo - $volume ml'),
+                              title: Text('$titulo'),
                               titleAlignment: ListTileTitleAlignment.center,
                               subtitle: Text(
                                 'R\$ $preco',

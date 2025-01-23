@@ -65,6 +65,12 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/deltaprice_hori.png
+    - assets/images/no_image.png
+    - assets/icon/water_icon.png
+    - assets/icon/juice_icon.png
+    - assets/icon/chips-bag_icon.png
+    - assets/icon/soda_icon.png
+    - assets/icon/candy_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

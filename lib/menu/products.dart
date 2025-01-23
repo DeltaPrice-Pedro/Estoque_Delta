@@ -3,7 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
-List<String> itensFilter = ['soda', 'water', 'juice'];
+List<String> itensFilter = ['soda', 'water', 'juice', 'chips', 'candy'];
+List<String> itensFilterbase = ['soda', 'water', 'juice', 'chips', 'candy'];
+int itensMaxLenght = itensFilter.length;
 
 class Products extends StatefulWidget {
   const Products({super.key});
@@ -15,16 +17,24 @@ class Products extends StatefulWidget {
 }
 
 class _Products extends State<Products> {
-  int itensMaxLenght = itensFilter.length;
-
   void updtFilter(String type) {
     if (itensFilter.length == itensMaxLenght) {
       itensFilter.clear();
     }
     setState(() {
-      (itensFilter.contains(type))
-          ? itensFilter.remove(type)
-          : itensFilter.add(type);
+      if (itensFilter.contains(type)) {
+        if (itensFilter.length == itensMaxLenght) {
+          itensFilter.clear();
+          itensFilter.add(type);
+        } else {
+          itensFilter.remove(type);
+          if (itensFilter.isEmpty) {
+            itensFilter = itensFilterbase;
+          }
+        }
+      } else {
+        itensFilter.add(type);
+      }
     });
   }
 
