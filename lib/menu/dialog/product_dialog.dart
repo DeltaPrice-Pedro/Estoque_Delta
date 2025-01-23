@@ -1,4 +1,4 @@
-import 'package:estoque_delta/menu/dialog/queryContent.dart';
+import 'package:estoque_delta/menu/dialog/query_content.dart';
 import 'package:estoque_delta/menu/dialog/confirm_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';

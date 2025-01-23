@@ -11,6 +11,12 @@ class QueryContent extends StatelessWidget {
     double? preco = infos['price'];
     String urlImage = infos['image'];
 
+    var noImageWidget = Image.asset(
+      'assets/images/no_image.png',
+      height: 100,
+      color: Colors.black,
+    );
+
     return Column(
       children: [
         Text(
@@ -29,10 +35,14 @@ class QueryContent extends StatelessWidget {
                         children: <Widget>[
                           AspectRatio(
                             aspectRatio: 1.0,
-                            child: Image.network(
-                              urlImage,
-                              height: 100,
-                            ),
+                            child: (urlImage != '')
+                              ? Image.network(
+                                  urlImage,
+                                  height: 100,
+                                  errorBuilder: (context, error, stackTrace) =>
+                                      noImageWidget,
+                                )
+                              : noImageWidget,
                           ),
                           Expanded(
                               child: Padding(
