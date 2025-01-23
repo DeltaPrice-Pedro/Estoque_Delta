@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:estoque_delta/menu/dialog/product_dialog.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard(this.infos, {super.key});
+  const ProductCard(this.infos, this.docID, {super.key});
 
   final Map infos;
+  final String docID;
 
   static const typeIcon = {
     'soda': 'assets/icon/soda_icon.png',
@@ -68,7 +69,7 @@ class ProductCard extends StatelessWidget {
                           onTap: () {
                             showDialog(
                                 context: context,
-                                builder: (context) => ProductDialog(infos));
+                                builder: (context) => ProductDialog(infos, docID));
                           },
                         ),
                       ))

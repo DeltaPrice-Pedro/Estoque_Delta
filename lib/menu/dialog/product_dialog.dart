@@ -5,20 +5,22 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ProductDialog extends StatefulWidget {
-  const ProductDialog(this.infos, {super.key});
+  const ProductDialog(this.infos, this.docID, {super.key});
 
   final Map infos;
+  final String docID;
 
   @override
   State<ProductDialog> createState() {
-    return _Product(infos);
+    return _Product(infos, docID);
   }
 }
 
 class _Product extends State<ProductDialog> {
-  _Product(this.infos);
+  _Product(this.infos, this.docID);
 
   final Map infos;
+  final String docID;
   Widget? activateContent;
   List<Widget>? actions;
 
@@ -52,6 +54,11 @@ class _Product extends State<ProductDialog> {
       'productPrice': infos['price'],
       'purchaseDateTime': DateTime.now()
     });
+
+    await FirebaseFirestore.instance
+        .collection('products')
+        .doc(docID)
+        .update({'amount': (infos['amount'] - 1)});
 
     setState(() {
       activateContent = const ConfirmContent();

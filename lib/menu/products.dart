@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 List<String> itensFilter = ['soda', 'water', 'juice', 'chips', 'candy'];
-List<String> itensFilterbase = ['soda', 'water', 'juice', 'chips', 'candy'];
+List<String> itensFilterBase = ['soda', 'water', 'juice', 'chips', 'candy'];
 int itensMaxLenght = itensFilter.length;
 
 class Products extends StatefulWidget {
@@ -18,23 +18,23 @@ class Products extends StatefulWidget {
 
 class _Products extends State<Products> {
   void updtFilter(String type) {
-    if (itensFilter.length == itensMaxLenght) {
-      itensFilter.clear();
-    }
     setState(() {
       if (itensFilter.contains(type)) {
         if (itensFilter.length == itensMaxLenght) {
           itensFilter.clear();
           itensFilter.add(type);
         } else {
-          itensFilter.remove(type);
-          if (itensFilter.isEmpty) {
-            itensFilter = itensFilterbase;
+          if (itensFilter.length - 1 == 0) {
+            itensFilter = itensFilterBase;
+          } else {
+            itensFilter.remove(type);
           }
         }
       } else {
         itensFilter.add(type);
       }
+      itensFilter;
+      itensFilterBase;
     });
   }
 
@@ -119,8 +119,8 @@ class _Products extends State<Products> {
 
               return ListView.builder(
                   itemCount: loadedProducts.length,
-                  itemBuilder: (cntx, index) =>
-                      ProductCard(loadedProducts[index].data()));
+                  itemBuilder: (cntx, index) => ProductCard(
+                      loadedProducts[index].data(), loadedProducts[index].id));
             },
           )),
     ]);
