@@ -132,11 +132,12 @@ class _Login extends State<Login> {
                         child: ElevatedButton(
                           onPressed: _submit,
                           style: ButtonStyle(
-                              backgroundColor: WidgetStatePropertyAll<Color>(
-                                  Colors.blueAccent)),
+                              backgroundColor:
+                                  WidgetStatePropertyAll<Color>(Colors.black)),
                           child: Text(
                             "Enviar",
-                            style: GoogleFonts.poppins(fontSize: 15),
+                            style: GoogleFonts.poppins(
+                                fontSize: 15, color: Colors.white),
                           ),
                         ),
                       )
