@@ -95,8 +95,8 @@ class _Profile extends State<Profile> {
           fontSize: 30,
         ),
       ),
-      SizedBox(
-          height: 330,
+      Expanded(
+          flex: 1,
           child: StreamBuilder(
             stream: FirebaseFirestore.instance
                 .collection('history')

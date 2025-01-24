@@ -49,6 +49,9 @@ class _Menu extends State<Menu> {
               color: Colors.lightBlue,
               splashColor: Colors.lightBlueAccent,
               iconSize: 40,
+            ),
+            SizedBox(
+              width: 40.0,
             )
           ],
         ),

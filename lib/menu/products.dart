@@ -40,7 +40,7 @@ class _Products extends State<Products> {
 
   @override
   Widget build(context) {
-    return Column(children: [
+    return Column(mainAxisAlignment: MainAxisAlignment.end, children: [
       SizedBox(
         height: 20,
       ),
@@ -87,42 +87,43 @@ class _Products extends State<Products> {
           ],
         ),
       ),
-      SizedBox(
-          height: 400,
-          child: StreamBuilder(
-            stream: FirebaseFirestore.instance
-                .collection('products')
-                .where('type', whereIn: itensFilter)
-                .snapshots(),
-            builder: (cntx, productsSnapshots) {
-              if (productsSnapshots.connectionState ==
-                  ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-
-              if (!productsSnapshots.hasData ||
-                  productsSnapshots.data!.docs.isEmpty) {
-                return const Center(
-                  child: Text('Sem produtos disponíveis'),
-                );
-              }
-
-              if (productsSnapshots.hasError) {
-                return const Center(
-                  child: Text('Algo deu errado...'),
-                );
-              }
-
-              final loadedProducts = productsSnapshots.data!.docs;
-
-              return ListView.builder(
-                  itemCount: loadedProducts.length,
-                  itemBuilder: (cntx, index) => ProductCard(
-                      loadedProducts[index].data(), loadedProducts[index].id));
-            },
-          )),
+      Expanded(
+        flex: 1,
+        child: StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection('products')
+              .where('type', whereIn: itensFilter)
+              .snapshots(),
+          builder: (cntx, productsSnapshots) {
+            if (productsSnapshots.connectionState ==
+                ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+        
+            if (!productsSnapshots.hasData ||
+                productsSnapshots.data!.docs.isEmpty) {
+              return const Center(
+                child: Text('Sem produtos disponíveis'),
+              );
+            }
+        
+            if (productsSnapshots.hasError) {
+              return const Center(
+                child: Text('Algo deu errado...'),
+              );
+            }
+        
+            final loadedProducts = productsSnapshots.data!.docs;
+        
+            return ListView.builder(
+                itemCount: loadedProducts.length,
+                itemBuilder: (cntx, index) => ProductCard(
+                    loadedProducts[index].data(), loadedProducts[index].id));
+          },
+        ),
+      ),
     ]);
   }
 }
