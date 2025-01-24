@@ -34,7 +34,7 @@ class _Menu extends State<Menu> {
           title: Padding(
             padding: const EdgeInsets.all(30.0),
             child: Image.asset(
-              'assets/images/deltaprice_hori.png',
+              'assets/images/estoque_delta_hori.png',
               width: 300,
             ),
           ),
