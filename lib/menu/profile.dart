@@ -1,52 +1,64 @@
-import 'package:estoque_delta/data/history_data.dart';
 import 'package:estoque_delta/menu/widgets/history_card.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
-class Profile extends StatelessWidget {
-  const Profile(this.nomeUsuario, {super.key});
+final String userUid = FirebaseAuth.instance.currentUser!.uid;
 
-  final String nomeUsuario;
+class Profile extends StatefulWidget {
+  const Profile({super.key});
 
-  String greeting() {
-    int currentHour = DateTime.now().hour - 3;
-    return (currentHour < 12)
-        ? 'Bom dia, '
-        : (currentHour > 12 && currentHour < 18)
-            ? 'Boa tarde, '
-            : 'Boa noite, ';
+  @override
+  State<Profile> createState() {
+    return _Profile();
   }
+}
+
+class _Profile extends State<Profile> {
+  final int currentHour = DateTime.now().hour - 3;
+
+  final _userName =
+      FirebaseFirestore.instance.collection('users').doc(userUid).get();
 
   @override
   Widget build(context) {
     return Column(children: [
       SizedBox(
-              height: 20,
-            ),
+        height: 20,
+      ),
       Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         verticalDirection: VerticalDirection.down,
         children: [
           Row(
             children: [
               Text(
-                greeting(),
+                (currentHour < 12)
+                    ? 'Bom dia, '
+                    : (currentHour >= 12 && currentHour < 18)
+                        ? 'Boa tarde, '
+                        : 'Boa noite, ',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.dmSans(
                   color: Colors.white,
                   fontStyle: FontStyle.italic,
-                  fontSize: 25,
+                  fontSize: 30,
                 ),
               ),
-              Text(
-                nomeUsuario,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.dmSans(
-                  color: Colors.white,
-                  fontSize: 25,
-                ),
-              ),
+              FutureBuilder(
+                  future: _userName,
+                  builder: (cntx, snapshot) {
+                    return Text(
+                      (!snapshot.hasData) ? '' : snapshot.data!['name'],
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.dmSans(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                        fontSize: 30,
+                      ),
+                    );
+                  })
             ],
           ),
           IconButton(
@@ -83,16 +95,57 @@ class Profile extends StatelessWidget {
           fontSize: 30,
         ),
       ),
-      SizedBox(
-          height: 330,
-          child: ListView.separated(
-            padding: const EdgeInsets.all(20),
-            itemCount: historyData.length,
-            itemBuilder: (cntx, index) => HistoryCard(historyData[index]),
-            separatorBuilder: (context, index) => const Divider(
-              color: Colors.white,
-            ),
+      Expanded(
+          flex: 1,
+          child: StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection('history')
+                .where('userUid',
+                    isEqualTo: userUid)
+                .snapshots(),
+            builder: (cntx, productsSnapshots) {
+              if (productsSnapshots.connectionState ==
+                  ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              if (!productsSnapshots.hasData ||
+                  productsSnapshots.data!.docs.isEmpty) {
+                return const Center(
+                  child: Text('Sem produtos no histórico'),
+                );
+              }
+
+              if (productsSnapshots.hasError) {
+                return const Center(
+                  child: Text('Algo deu errado...'),
+                );
+              }
+
+              final loadedHistory = productsSnapshots.data!.docs;
+
+              return ListView.separated(
+                  padding: const EdgeInsets.all(20),
+                  separatorBuilder: (context, index) => const Divider(
+                        color: Colors.white,
+                      ),
+                  itemCount: loadedHistory.length,
+                  itemBuilder: (cntx, index) =>
+                      HistoryCard(loadedHistory[index].data()));
+            },
           ))
     ]);
   }
 }
+
+
+// ListView.separated(
+//             padding: const EdgeInsets.all(20),
+//             itemCount: historyData.length,
+//             itemBuilder: (cntx, index) => HistoryCard(historyData[index]),
+//             separatorBuilder: (context, index) => const Divider(
+//               color: Colors.white,
+//             ),
+//           )

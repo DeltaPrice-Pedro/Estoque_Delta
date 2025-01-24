@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+final formatter = DateFormat('dd/MM/yyyy, HH:mm');
 
 class HistoryCard extends StatelessWidget {
   const HistoryCard(this.history, {super.key});
@@ -7,10 +11,10 @@ class HistoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String title = history['name'];
-    String volum = history['volum'];
-    String datetime = history['datetime'];
-    String preco = history['price'];
+    String title = history['productName'];
+    String datetime =
+        formatter.format((history['purchaseDateTime'] as Timestamp).toDate());
+    double preco = history['productPrice'];
 
     return Card.outlined(
         shape: RoundedRectangleBorder(
@@ -29,7 +33,7 @@ class HistoryCard extends StatelessWidget {
                   Icons.attach_money_sharp,
                   size: 35,
                 ),
-                title: Text('$title - $volum ml'),
+                title: Text(title),
                 titleAlignment: ListTileTitleAlignment.center,
                 subtitle: Text(
                   '$datetime\nR\$ $preco',

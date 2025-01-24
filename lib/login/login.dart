@@ -45,6 +45,7 @@ class _Login extends State<Login> {
   @override
   Widget build(context) {
     return Scaffold(
+      backgroundColor: Colors.blueAccent,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -68,7 +69,7 @@ class _Login extends State<Login> {
                 child: Column(
                   children: [
                     Text(
-                      'Bem vindo(a) a lojinha',
+                      'Ação entre amigos',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(fontSize: 25.0),
                     ),

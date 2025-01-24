@@ -19,7 +19,7 @@ class App extends StatelessWidget {
   @override
   Widget build(context) {
     return MaterialApp(
-        title: 'Estoque Deltaprice',
+        title: 'Lojinha Deltaprice',
         theme: ThemeData(useMaterial3: true).copyWith(
           colorScheme: ColorScheme.fromSeed(
               seedColor: const Color.fromARGB(255, 26, 131, 250)),

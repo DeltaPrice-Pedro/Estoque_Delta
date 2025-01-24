@@ -12,16 +12,16 @@ class Menu extends StatefulWidget {
 }
 
 class _Menu extends State<Menu> {
-  Widget profilePage = Profile('Wellington Celestino');
-  Widget productsPage = Products();
+  final Widget profilePage = Profile();
+  final Widget productsPage = Products();
   Widget activatePage = Products();
-  IconData activatePerfil = Icons.account_circle_outlined;
 
   bool menuState = true;
 
   switchPage() {
     setState(() {
-      activatePage = menuState ? profilePage : productsPage;
+      activatePage = menuState ? const Profile() : const Products();
+      // activatePage = menuState ? profilePage : productsPage;
     });
     menuState = !menuState;
   }
@@ -29,44 +29,45 @@ class _Menu extends State<Menu> {
   @override
   Widget build(context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Image.asset(
-          'assets/images/deltaprice_hori.png',
-          width: 300,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Image.asset(
+              'assets/images/deltaprice_hori.png',
+              width: 300,
+            ),
+          ),
+          centerTitle: false,
+          actions: [
+            IconButton(
+              onPressed: switchPage,
+              icon: menuState
+                  ? Icon(Icons.account_circle_outlined)
+                  : Icon(Icons.account_circle_rounded),
+              alignment: Alignment.center,
+              color: Colors.lightBlue,
+              splashColor: Colors.lightBlueAccent,
+              iconSize: 40,
+            ),
+            SizedBox(
+              width: 40.0,
+            )
+          ],
         ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: switchPage,
-            icon: menuState
-                ? Icon((Icons.account_circle_outlined))
-                : Icon(Icons.account_circle_rounded),
-            alignment: Alignment.center,
-            color: Colors.lightBlue,
-            splashColor: Colors.lightBlueAccent,
-            iconSize: 40,
-          )
-        ],
-      ),
-      body: Center(
-        child: activatePage,
-      ),
-    );
+        body: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [
+            const Color.fromARGB(255, 26, 131, 250),
+            const Color.fromARGB(255, 74, 158, 254),
+          ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
+          // alignment: Alignment.topCenter,
+          child: Center(
+            child: activatePage,
+          ),
+        ));
   }
 }
-
-
- // Container(
-            //   color: Colors.white,
-            //   padding: EdgeInsets.all(30),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     verticalDirection: VerticalDirection.up,
-            //     children: [
-            //       Image.asset(
-            //         'assets/images/deltaprice_hori.png',
-            //         width: 300,
-            //       ),
             //       SizedBox(
             //         height: 70,
             //         width: 2,
@@ -74,16 +75,3 @@ class _Menu extends State<Menu> {
             //           color: Colors.blue,
             //         ),
             //       ),
-            //       IconButton(
-            //         onPressed: switchPage,
-            //         icon: menuState
-            //             ? Icon((Icons.account_circle_outlined))
-            //             : Icon(Icons.account_circle_rounded),
-            //         alignment: Alignment.center,
-            //         color: Colors.lightBlue,
-            //         splashColor: Colors.lightBlueAccent,
-            //         iconSize: 40,
-            //       )
-            //     ],
-            //   ),
-            // ),
