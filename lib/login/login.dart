@@ -76,7 +76,7 @@ class _Login extends State<Login> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Image.asset(
-                        'assets/images/deltaprice_hori.png',
+                        'assets/images/estoque_delta_hori.png',
                         width: 350,
                       ),
                     ),
@@ -131,10 +131,13 @@ class _Login extends State<Login> {
                         padding: const EdgeInsets.only(top: 60.0),
                         child: ElevatedButton(
                           onPressed: _submit,
-                          // style: ButtonStyle(backgroundColor: Colors.white),
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  WidgetStatePropertyAll<Color>(Colors.black)),
                           child: Text(
                             "Enviar",
-                            style: GoogleFonts.poppins(fontSize: 15),
+                            style: GoogleFonts.poppins(
+                                fontSize: 15, color: Colors.white),
                           ),
                         ),
                       )
