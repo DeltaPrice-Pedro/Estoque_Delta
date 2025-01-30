@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:640328016998:android:3d14298c4ecd53dfafb9a7",
         "android_client_info": {
-          "package_name": "com.example.estoque_delta"
+          "package_name": "br.com.deltaprice.estoque_delta"
         }
       },
       "oauth_client": [],
