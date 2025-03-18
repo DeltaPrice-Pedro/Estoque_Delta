@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:estoque_delta/menu/widgets/product_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';

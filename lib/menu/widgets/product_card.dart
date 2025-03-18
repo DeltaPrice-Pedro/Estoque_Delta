@@ -54,7 +54,7 @@ class ProductCard extends StatelessWidget {
                           title: Text(titulo!),
                           titleAlignment: ListTileTitleAlignment.center,
                           subtitle: Text(
-                            'R\$ $preco',
+                            'R\$ $preco - Disponível: $amount',
                             style: TextStyle(color: Colors.black),
                           ),
                           trailing: (amount != 0)
