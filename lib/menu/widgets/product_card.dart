@@ -18,7 +18,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? titulo = infos['title'];
-    double? preco = infos['price'];
+    dynamic preco = infos['price'];
     int? amount = infos['amount'];
     String? urlImage = infos['image'];
 
@@ -54,7 +54,7 @@ class ProductCard extends StatelessWidget {
                           title: Text(titulo!),
                           titleAlignment: ListTileTitleAlignment.center,
                           subtitle: Text(
-                            'R\$ $preco',
+                            'R\$ $preco - Disponível: $amount',
                             style: TextStyle(color: Colors.black),
                           ),
                           trailing: (amount != 0)

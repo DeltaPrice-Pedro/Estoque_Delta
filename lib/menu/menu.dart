@@ -43,8 +43,8 @@ class _Menu extends State<Menu> {
             IconButton(
               onPressed: switchPage,
               icon: menuState
-                  ? Icon(Icons.account_circle_outlined)
-                  : Icon(Icons.account_circle_rounded),
+                  ? Icon(Icons.account_circle_rounded)
+                  : Icon(Icons.account_circle_outlined),
               alignment: Alignment.center,
               color: Colors.lightBlue,
               splashColor: Colors.lightBlueAccent,
