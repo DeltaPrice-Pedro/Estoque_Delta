@@ -18,7 +18,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? titulo = infos['title'];
-    double? preco = infos['price'];
+    dynamic preco = infos['price'];
     int? amount = infos['amount'];
     String? urlImage = infos['image'];
 
