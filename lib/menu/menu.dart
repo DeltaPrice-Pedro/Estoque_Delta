@@ -68,10 +68,3 @@ class _Menu extends State<Menu> {
         ));
   }
 }
-            //       SizedBox(
-            //         height: 70,
-            //         width: 2,
-            //         child: ColoredBox(
-            //           color: Colors.blue,
-            //         ),
-            //       ),

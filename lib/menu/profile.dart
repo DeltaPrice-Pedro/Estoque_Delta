@@ -3,8 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 final String userUid = FirebaseAuth.instance.currentUser!.uid;
+var f = NumberFormat.decimalPattern('pt_BR');
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -31,32 +33,61 @@ class _Profile extends State<Profile> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         verticalDirection: VerticalDirection.down,
         children: [
-          Row(
+          Column(
             children: [
-              Text(
-                (currentHour < 12)
-                    ? 'Bom dia, '
-                    : (currentHour >= 12 && currentHour < 18)
-                        ? 'Boa tarde, '
-                        : 'Boa noite, ',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.dmSans(
-                  color: Colors.white,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 30,
-                ),
+              Row(
+                children: [
+                  Text(
+                    (currentHour < 12)
+                        ? 'Bom dia, '
+                        : (currentHour >= 12 && currentHour < 18)
+                            ? 'Boa tarde, '
+                            : 'Boa noite, ',
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.dmSans(
+                      color: Colors.white,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 20,
+                    ),
+                  ),
+                  FutureBuilder(
+                      future: _userName,
+                      builder: (cntx, snapshot) {
+                        return Column(
+                          children: [
+                            Text(
+                              (!snapshot.hasData)
+                                  ? 'Usuário'
+                                  : snapshot.data!['name'],
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.dmSans(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ],
+                        );
+                      })
+                ],
               ),
               FutureBuilder(
                   future: _userName,
                   builder: (cntx, snapshot) {
-                    return Text(
-                      (!snapshot.hasData) ? '' : snapshot.data!['name'],
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.dmSans(
-                        color: Colors.white,
-                        fontStyle: FontStyle.italic,
-                        fontSize: 30,
-                      ),
+                    final valueSpent = (!snapshot.hasData)
+                        ? '--'
+                        : f.format(snapshot.data!['totalSpent']);
+                    return Column(
+                      children: [
+                        Text(
+                          'Total gasto: R\$ $valueSpent',
+                          textAlign: TextAlign.left,
+                          style: GoogleFonts.dmSans(
+                            color: const Color.fromARGB(255, 188, 223, 251),
+                            fontStyle: FontStyle.italic,
+                            fontSize: 17,
+                          ),
+                        ),
+                      ],
                     );
                   })
             ],
@@ -92,7 +123,7 @@ class _Profile extends State<Profile> {
         textAlign: TextAlign.center,
         style: GoogleFonts.poppins(
           color: Colors.white,
-          fontSize: 30,
+          fontSize: 25,
         ),
       ),
       Expanded(
@@ -100,8 +131,7 @@ class _Profile extends State<Profile> {
           child: StreamBuilder(
             stream: FirebaseFirestore.instance
                 .collection('history')
-                .where('userUid',
-                    isEqualTo: userUid)
+                .where('userUid', isEqualTo: userUid)
                 .snapshots(),
             builder: (cntx, productsSnapshots) {
               if (productsSnapshots.connectionState ==
@@ -114,7 +144,10 @@ class _Profile extends State<Profile> {
               if (!productsSnapshots.hasData ||
                   productsSnapshots.data!.docs.isEmpty) {
                 return const Center(
-                  child: Text('Sem produtos no histórico'),
+                  child: Text(
+                    'Sem produtos no histórico (～￣▽￣)～',
+                    style: TextStyle(fontSize: 20),
+                  ),
                 );
               }
 

@@ -46,8 +46,8 @@ class _Products extends State<Products> {
         height: 20,
       ),
       Text(
-        'Produtos disponíveis',
-        style: GoogleFonts.poppins(color: Colors.white, fontSize: 40),
+        'Produtos Disponíveis',
+        style: GoogleFonts.poppins(color: Colors.white, fontSize: 25),
       ),
       Padding(
         padding: const EdgeInsets.all(15),

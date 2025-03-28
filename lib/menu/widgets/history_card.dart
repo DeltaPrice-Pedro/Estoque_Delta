@@ -29,10 +29,6 @@ class HistoryCard extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
               child: ListTile(
-                trailing: Icon(
-                  Icons.attach_money_sharp,
-                  size: 35,
-                ),
                 title: Text(title),
                 titleAlignment: ListTileTitleAlignment.center,
                 subtitle: Text(
@@ -40,7 +36,6 @@ class HistoryCard extends StatelessWidget {
                   style:
                       TextStyle(color: const Color.fromARGB(255, 194, 47, 47)),
                 ),
-                iconColor: Colors.blue,
               ),
             )));
   }

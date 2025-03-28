@@ -7,14 +7,6 @@ class ProductCard extends StatelessWidget {
   final Map infos;
   final String docID;
 
-  static const typeIcon = {
-    'soda': 'assets/icon/soda_icon.png',
-    'juice': 'assets/icon/juice_icon.png',
-    'water': 'assets/icon/water_icon.png',
-    'chips': 'assets/icon/chips-bag_icon.png',
-    'candy': 'assets/icon/candy_icon.png'
-  };
-
   @override
   Widget build(BuildContext context) {
     String? titulo = infos['title'];
@@ -61,10 +53,6 @@ class ProductCard extends StatelessWidget {
                               ? Icon(Icons.check_circle_outline_rounded)
                               : Icon(Icons.remove_circle_outline_rounded),
                           enabled: (amount != 0) ? true : false,
-                          leading: ImageIcon(
-                            AssetImage(typeIcon[infos["type"]]!),
-                            size: 35,
-                          ),
                           iconColor: Colors.blue,
                           onTap: () {
                             showDialog(
