@@ -50,6 +50,7 @@ class _Product extends State<ProductDialog> {
     final user = FirebaseAuth.instance.currentUser!;
     await FirebaseFirestore.instance.collection('history').add({
       'userUid': user.uid,
+      'productUid': docID,
       'productName': infos['title'],
       'productPrice': infos['price'],
       'purchaseDateTime': DateTime.now()
