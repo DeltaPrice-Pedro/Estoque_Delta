@@ -8,7 +8,7 @@ class QueryContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? titulo = infos['title'];
-    double? preco = infos['price'];
+    dynamic preco = infos['price'];
     String urlImage = infos['image'];
 
     var noImageWidget = Image.asset(

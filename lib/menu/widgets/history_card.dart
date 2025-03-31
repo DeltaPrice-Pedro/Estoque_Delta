@@ -14,7 +14,7 @@ class HistoryCard extends StatelessWidget {
     String title = history['productName'];
     String datetime =
         formatter.format((history['purchaseDateTime'] as Timestamp).toDate());
-    double preco = history['productPrice'];
+    dynamic preco = history['productPrice'];
 
     return Card.outlined(
         shape: RoundedRectangleBorder(
