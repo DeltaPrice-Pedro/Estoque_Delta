@@ -70,10 +70,10 @@ class _Product extends State<ProductDialog> {
       currentTotal = doc.data();
     });
 
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.uid)
-        .update({'totalSpent': (currentTotal['totalSpent'] + infos['price'])});
+    await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
+      'totalSpent': num.parse(
+          (currentTotal['totalSpent'] + infos['price']).toStringAsFixed(2))
+    });
 
     setState(() {
       activateContent = const ConfirmContent();
