@@ -49,9 +49,9 @@ class ProductCard extends StatelessWidget {
                             'R\$ $preco - Disponível: $amount',
                             style: TextStyle(color: Colors.black),
                           ),
-                          trailing: (amount != 0)
-                              ? Icon(Icons.check_circle_outline_rounded)
-                              : Icon(Icons.remove_circle_outline_rounded),
+                          // trailing: (amount != 0)
+                          //     ? Icon(Icons.check_circle_outline_rounded)
+                          //     : Icon(Icons.remove_circle_outline_rounded),
                           enabled: (amount != 0) ? true : false,
                           iconColor: Colors.blue,
                           onTap: () {

@@ -103,6 +103,7 @@ class _Products extends State<Products> {
           stream: FirebaseFirestore.instance
               .collection('products')
               .where('type', whereIn: itensFilter)
+              .where('amount', isGreaterThan: 0)
               .snapshots(),
           builder: (cntx, productsSnapshots) {
             if (productsSnapshots.connectionState == ConnectionState.waiting) {
